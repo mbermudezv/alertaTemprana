@@ -1,0 +1,15 @@
+{
+    "short_name": "AT",
+    "name": "AlerTemprana",
+    "icons": [
+    {
+    "src":"img/appico.png",
+    "sizes": "192x192",
+    "type": "image/png"
+    }    
+    ],
+    "start_url": "inicio.php",
+    "background_color": "#303030",
+    "theme_color": "#499bea",
+    "display": "standalone"
+  }
