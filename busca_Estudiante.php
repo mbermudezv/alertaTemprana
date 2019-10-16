@@ -33,8 +33,7 @@ ini_set('html_errors', true);
     </div>
     <div id="contenedor_Fila">        
         <a id="hyp_cliente" class="cell"></a>
-    </div>
-         
+    </div>         
 </div>
 <div id="statusBar">
     <a href="https://www.lasesperanzas.ed.cr">lasesperanzas.ed.cr</a>
