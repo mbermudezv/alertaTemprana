@@ -22,7 +22,7 @@ ini_set('html_errors', true);
 <body>
 <div id="menu">
     <a id="salir" href="https://www.lasesperanzas.ed.cr"></a>
-    <a id="menu2" class="cliente" href="estudiante_Mantenimiento.php?id=<?php echo $id; ?>"></a>        
+    <a id="mant" href="estudiante_Mantenimiento.php?id=<?php echo $id; ?>"></a>        
 </div>
 <div id="mainArea">
     <div id="contenedor_Fila">
@@ -80,7 +80,7 @@ window.onload = function() {
 
 $('#salir').html('<img src="img/salir.png">');
 $('#btnbuscar').html('<img src="img/refresh.png">');
-$('#cliente').html('<img src="img/cliente.png">');
+$('#mant').html('<img src="img/cliente.png">');
 
 </script>
 </body>
