@@ -5,6 +5,10 @@ ini_set('max_execution_time', 300);
 error_reporting(E_ALL);
 ini_set('display_errors', true);        
 ini_set('html_errors', true);
+
+$estudiante_Id = $_GET['estudiante']; 
+$dir = "alerta.php?estudiante=";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +26,7 @@ ini_set('html_errors', true);
 <body>
 <div id="menu">
     <a id="salir" href="https://www.lasesperanzas.ed.cr"></a>
-    <a id="mant" href="estudiante_Mantenimiento.php?id=<?php echo $id; ?>"></a>        
+    <a id="mant" href="estudiante_Mantenimiento.php?id=<?php echo $estudiante_Id; ?>"></a>        
 </div>
 <div id="mainArea">
     <div id="contenedor_Fila">
@@ -45,23 +49,22 @@ ini_set('html_errors', true);
 function buscar() {
 	
 	var strAlias = document.getElementById("txtBuscar").value;
-	var dir = <?php echo json_encode($dir); ?>;
-	var periodo_Id = <?php echo $periodo_Id; ?>;
+	var dir = <?php echo json_encode($dir); ?>;	
 
 	$( ".cell" ).remove();	
 	
-	$.getJSON("sql/selectTrabajadorGestor.php", { alias: strAlias })	
+	$.getJSON("sql/selectEstudianteGestor.php", { alias: strAlias })	
 	.done(function(data) {										
 	$.each(data, function(n, linkData) {
 		
 		// alert(dir + linkData.Cliente_Id);
-		var item = document.getElementById("item");
+		var item = document.getElementById("contenedor_Fila");
 		var listItem = document.createElement('a');
-		var createAText = document.createTextNode(linkData.trabajador_Nombre);
+		var createAText = document.createTextNode(linkData.estudiante_Nombre);
 		
 		listItem.className = "cell";
 		listItem.id = "hyp_cliente"	;
-		listItem.setAttribute('href', dir + linkData.trabajador_Id + "&periodo=" + periodo_Id);				
+		listItem.setAttribute('href', dir + linkData.estudiante_Id);				
 		listItem.appendChild(createAText);
 		item.appendChild(listItem);				
 		
