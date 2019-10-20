@@ -6,7 +6,12 @@ error_reporting(E_ALL);
 ini_set('display_errors', true);        
 ini_set('html_errors', true);
 
-$estudiante_Id = $_GET['estudiante']; 
+if (isset($_GET['estudiante'])) { 
+    $estudiante_Id = $_GET['estudiante'];
+} else {
+    $estudiante_Id = 0;
+}
+ 
 $dir = "alerta.php?estudiante=";
 
 ?>
@@ -25,19 +30,13 @@ $dir = "alerta.php?estudiante=";
 </head>
 <body>
 <div id="menu">
-    <a id="salir" href="https://www.lasesperanzas.ed.cr"></a>
+    <a id="salir" href="<?php echo $dir . $estudiante_Id ?>"></a>
     <a id="mant" href="estudiante_Mantenimiento.php?id=<?php echo $estudiante_Id; ?>"></a>        
 </div>
 <div id="mainArea">
-    <div id="contenedor_Fila">
-        <input type="text" id="txtBuscar" name="buscar" value="">
-    </div>
-    <div id="contenedor_Fila">        
-        <div id="btnbuscar" onclick="buscar();"> 
-    </div>
-    <div id="contenedor_Fila">        
-        <a id="hyp_cliente" class="cell"></a>
-    </div>         
+    <div id="contenedor_Fila"><input type="text" id="txtBuscar" name="buscar" value=""></div>
+    <div id="contenedor_Fila"><div id="btnbuscar" onclick="buscar();"></div></div>
+    <div id="contenedor_Fila"><a id="hyp_cliente" class="cell"></a></div>         
 </div>
 <div id="statusBar">
     <a href="https://www.lasesperanzas.ed.cr">lasesperanzas.ed.cr</a>
@@ -56,11 +55,12 @@ function buscar() {
 	$.getJSON("sql/selectEstudianteGestor.php", { alias: strAlias })	
 	.done(function(data) {										
 	$.each(data, function(n, linkData) {
-		
-		// alert(dir + linkData.Cliente_Id);
+				
 		var item = document.getElementById("contenedor_Fila");
 		var listItem = document.createElement('a');
-		var createAText = document.createTextNode(linkData.estudiante_Nombre);
+		var createAText = document.createTextNode(linkData.estudiante_Nombre + " " + 
+                                                    linkData.estudiante_PrimerApellido  + " " + 
+                                                    linkData.estudiante_SegundoApellido);
 		
 		listItem.className = "cell";
 		listItem.id = "hyp_cliente"	;

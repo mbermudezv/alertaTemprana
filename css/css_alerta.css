@@ -71,6 +71,42 @@ body {
           flex-flow: column nowrap;
 }
 
+#contenedor_Fila {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0.2%;
+  padding: 0.2%;
+}
+
+#contenedor_Fila * {
+  margin: 0.5vw;
+  padding: 0.5vw;
+}
+
+#ColNombre {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: transparent;
+  font-family: "Lucida Console", Monaco, monospace;
+  color: white;
+  font-size: 1em;
+  margin: 0.5%;
+  padding: 0.5%;
+  text-decoration: none;
+}
+
 #statusBar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -115,10 +151,20 @@ a:active {
     margin: 0.5vw;
     padding: 0.5vw;
   }
+  #contenedor_Fila {
+    margin: 0.1%;
+    padding: 0.1%;
+  }
+  #ColNombre {
+    width: 50%;
+    font-size: 1.2em;
+    margin: 0.5%;
+    padding: 0.5%;
+  }
   #statusBar {
     margin: 0.5%;
     padding: 0.5%;
-    font-size: 1em;
+    font-size: 1.2em;
   }
 }
 /*# sourceMappingURL=css_alerta.css.map */

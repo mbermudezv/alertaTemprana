@@ -17,7 +17,8 @@ try {
 		}		
 		$rs = null;
 		$db = null;
-		echo json_encode($rsArray);		
+		echo json_encode($rsArray);
+			
 	}
 	else{
 		echo "0";

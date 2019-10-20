@@ -3,7 +3,18 @@ $paddinPCTablaItemCol : 0.50%;
 $margenMovilTablaItem : 0.50%;
 $paddinMovilTablaItem : 0.50%;
 $fontMovil: 1em;
-$fontPC: 1em;
+$fontPC: 1.2em;
+//tabla
+$margenTablaMovil : 0.20%;
+$paddinTablaMovil : 0.20%;
+$margenTablaPC : 0.10%;
+$paddinTablaPC : 0.10%;
+//Col
+$margenMovilTablaItemCol : 0.50%;
+$paddinMovilTablaItemCol : 0.50%;
+
+$margenPCTablaItemCol : 0.50%;
+$paddinPCTablaItemCol : 0.50%;
 
 @viewport {
     width: device-width;
@@ -52,6 +63,31 @@ body {
     flex-flow: column nowrap;      
 }
 
+#contenedor_Fila {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;    
+    margin: $margenTablaMovil;
+    padding: $paddinTablaMovil;   
+}
+
+#contenedor_Fila * {
+    margin: 0.5vw;
+    padding: 0.5vw;
+  }
+
+  #ColNombre{
+    display: flex;
+    justify-content: center; 
+    background-color: transparent;
+	font-family: "Lucida Console", Monaco, monospace;	
+	color: white;
+    font-size: $fontMovil;
+    margin: $margenMovilTablaItemCol;
+    padding: $paddinMovilTablaItemCol;
+    text-decoration: none;    
+}
+
 #statusBar {       
     // flex-grow: 1;
     display: flex;      
@@ -90,7 +126,18 @@ a:active {
         margin: 0.5vw;     
         padding: 0.5vw;
     }
+    #contenedor_Fila {
+        margin: $margenTablaPC;
+        padding: $paddinTablaPC;  
+    }
 
+    #ColNombre{
+        width: 50%;
+        font-size: $fontPC;
+        margin: $margenPCTablaItemCol;
+        padding: $paddinPCTablaItemCol;
+    }
+    
     #statusBar {          
         margin: $margenPCTablaItemCol;
         padding: $paddinPCTablaItemCol;

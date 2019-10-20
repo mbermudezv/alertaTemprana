@@ -54,7 +54,8 @@ body {
 #mainArea {
     flex-grow: 1;
     display: flex;
-    flex-flow: column nowrap;      
+    flex-flow: column wrap;
+          
 }
 
 #contenedor_Fila {
@@ -80,18 +81,18 @@ body {
     padding: 2vw;
 }
 
-#btnbuscar {
-    align-self: center;
+#btnbuscar {        
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    background: white;
-    margin: 2vw;
-    padding: 2vw;
+    flex-flow: row wrap;    
+    margin: 1vw;
+    padding: 1vw;
+}
+
+#btnbuscar * {
+    width: 2em;
+    height: 2em;    
+	background: white;
+	border-radius: 50%;	
 }
 
 .cell {
@@ -150,6 +151,12 @@ a:active {
         margin: $margenTablaPC ;
         padding: $paddinTablaPC;   
     }
+
+    #btnbuscar * {
+        width: 4em;
+        height: 4em;           
+    }
+
     #statusBar {          
         margin: $margenPCTablaItemCol;
         padding: $paddinPCTablaItemCol;
