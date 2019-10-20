@@ -12,11 +12,15 @@ try {
     $estudiante_Nombre="";
     $estudiante_PrimerApellido="";
     $estudiante_SegundoApellido="";
+    $situacion_Id=0;
+    $alerta_Comentario="";
+
     $db = new select(); 
             
 if (isset($_GET['estudiante'])) { 
     $estudiante_Id = $_GET['estudiante'];
     $rsEstudiante = $db->conEstudiante($estudiante_Id);
+    $rsSituacion = $db->conSituacion();
     if (!empty($rsEstudiante)) {            
         foreach ($rsEstudiante as $key => $value) {
             $estudiante_Nombre = $value['estudiante_Nombre'];
@@ -57,12 +61,40 @@ if (isset($_GET['estudiante'])) {
     <div id="contenedor_Fila">
         <div id="ColNombre"> <?php echo $estudiante_Nombre . " " . $estudiante_PrimerApellido . " " . $estudiante_SegundoApellido ?> </div>
     </div>
+    <div id="contenedor_Fila">
+        <select id="cboPuesto" class="txtDescripcion" onchange="getval(this.value);">
+            <?php
+            foreach($rsSituacion as $cc => $name) {
+                echo '<option value="' . $name['situacion_Id'] . '">' . $name['situacion_Nombre'] . '</option>';
+            }
+            ?>
+        </select>
+    </div>
+    <div id="contenedor_Fila">
+        <textarea id="txtComentario" rows="3"><?php echo $alerta_Comentario; ?></textarea>
+    </div>        
 </div>
 <div id="statusBar">
-    <a href="https://www.lasesperanzas.ed.cr">lasesperanzas.ed.cr</a>
-    <a href="https://www.wappcom.net">wappcom.net</a>                                       
+    <a id="linkHogar" href="https://www.lasesperanzas.ed.cr">lasesperanzas.ed.cr</a>
+    <a id="linkWappcom"href="https://www.wappcom.net">wappcom.net</a>                                       
 </div>
-<script>
+ 
+<script language='javascript'>
+
+var situacion_Id = <?php echo $situacion_Id;?>;
+
+function getval(sel){             
+    //alert(sel);
+    situacion_Id = sel;           
+}
+    
+//Cuando carga por primera vez, seleciona el item segun $situacion_Id
+if (situacion_Id > 0) {                
+    $("#cboPuesto").val(situacion_Id);
+}else{
+    situacion_Id=1;//Para que por defecto quede seleccionado la primera opcion
+}
+
 $('#salir').html('<img src="img/salir.png">');
 $('#add').html('<img src="img/add.png">');
 </script>

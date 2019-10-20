@@ -46,6 +46,23 @@ class select {
 		}	
 		$pdo = null;	    
 	}
+
+	function conSituacion(){
+		
+		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS , array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));			
+		if ($pdo != null){		
+			$sql = $pdo->query('SELECT * FROM situacion');
+			$rs = [];
+			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+					$rs[] = [
+						'situacion_Id' => $row['situacion_Id'],	                
+						'situacion_Nombre' => $row['situacion_Nombre']				
+					];	
+			}
+			return $rs;
+		}	
+		$pdo = null;
+	}
 }
 
 ?>

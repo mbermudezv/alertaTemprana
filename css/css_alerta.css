@@ -71,6 +71,11 @@ body {
           flex-flow: column nowrap;
 }
 
+#add {
+  width: 2em;
+  height: 2em;
+}
+
 #contenedor_Fila {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -107,6 +112,25 @@ body {
   text-decoration: none;
 }
 
+.txtDescripcion {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-color: black;
+  color: white;
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+#txtComentario {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-color: white;
+  color: black;
+  font-family: "Lucida Console", Monaco, monospace;
+  border-radius: 5px;
+}
+
 #statusBar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -123,11 +147,6 @@ body {
   padding: 0.5%;
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 1em;
-}
-
-input[type=checkbox] {
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
 }
 
 a:link {
@@ -151,6 +170,10 @@ a:active {
     margin: 0.5vw;
     padding: 0.5vw;
   }
+  #add {
+    width: 4em;
+    height: 4em;
+  }
   #contenedor_Fila {
     margin: 0.1%;
     padding: 0.1%;
@@ -161,10 +184,33 @@ a:active {
     margin: 0.5%;
     padding: 0.5%;
   }
+  .txtDescripcion {
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    font-size: 1.2em;
+  }
+  #cboPuesto {
+    -ms-flex-preferred-size: 70%;
+        flex-basis: 70%;
+  }
+  #txtComentario {
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    -ms-flex-preferred-size: 70%;
+        flex-basis: 70%;
+  }
   #statusBar {
     margin: 0.5%;
     padding: 0.5%;
     font-size: 1.2em;
+  }
+  #linkHogar {
+    margin-left: 1vh;
+  }
+  #linkWappcom {
+    margin-right: 1vh;
   }
 }
 /*# sourceMappingURL=css_alerta.css.map */

@@ -63,6 +63,11 @@ body {
     flex-flow: column nowrap;      
 }
 
+#add {
+    width: 2em;
+    height: 2em;    
+}
+
 #contenedor_Fila {
     display: flex;
     flex-flow: row wrap;
@@ -88,6 +93,20 @@ body {
     text-decoration: none;    
 }
 
+.txtDescripcion {
+    flex-grow: 1;
+	background-color: black;
+	color: white;	
+	font-family: "Lucida Console", Monaco, monospace;    
+}
+
+#txtComentario {
+    flex-grow: 1;
+    background-color: white;
+    color:black;	
+    font-family: "Lucida Console", Monaco, monospace;		
+    border-radius: 5px;   
+}
 #statusBar {       
     // flex-grow: 1;
     display: flex;      
@@ -100,9 +119,6 @@ body {
     font-size: $fontMovil; 
 }
 
-input[type=checkbox] {
-	transform: scale(1.5);
-}
 
 a:link {
     text-decoration: none;
@@ -126,6 +142,12 @@ a:active {
         margin: 0.5vw;     
         padding: 0.5vw;
     }
+
+    #add {
+        width: 4em;
+        height: 4em;    
+    }
+
     #contenedor_Fila {
         margin: $margenTablaPC;
         padding: $paddinTablaPC;  
@@ -137,10 +159,33 @@ a:active {
         margin: $margenPCTablaItemCol;
         padding: $paddinPCTablaItemCol;
     }
+
+    .txtDescripcion {
+        flex-grow: 0;
+        font-size: 1.2em;
+    }
+
+    #cboPuesto {    
+        flex-basis: 70%;
+    }
+
+    #txtComentario {
+        flex-grow: 0;
+        flex-basis: 70%;
+    }
     
     #statusBar {          
         margin: $margenPCTablaItemCol;
         padding: $paddinPCTablaItemCol;
         font-size: $fontPC;
     }
+
+    #linkHogar{
+        margin-left: 1vh;
+    }
+
+    #linkWappcom{
+        margin-right: 1vh;
+    }
+
 }
