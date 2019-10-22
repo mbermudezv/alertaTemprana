@@ -7,18 +7,23 @@ ini_set('display_errors', true);
 
 try {
     
-    require_once("sql/select.php");
-    
-    $estudiante_Nombre="";
-    $estudiante_PrimerApellido="";
-    $estudiante_SegundoApellido="";
-    $situacion_Id=0;
-    $alerta_Comentario="";
+require_once("sql/select.php");
+           
+$db = new select(); 
 
-    $db = new select(); 
-            
+$estudiante_Nombre="";
+$estudiante_PrimerApellido="";
+$estudiante_SegundoApellido=""; 
+
+if (isset($_GET['situacion'])) {  
+    $situacion_Id = $_GET['situacion'];
+} else {
+    $situacion_Id = 0;
+    $situacion_Comentario="";
+}
+
 if (isset($_GET['estudiante'])) { 
-    $estudiante_Id = $_GET['estudiante'];
+    $estudiante_Id = $_GET['estudiante'];   
     $rsEstudiante = $db->conEstudiante($estudiante_Id);
     $rsSituacion = $db->conSituacion();
     if (!empty($rsEstudiante)) {            
@@ -71,14 +76,17 @@ if (isset($_GET['estudiante'])) {
         </select>
     </div>
     <div id="contenedor_Fila">
-        <textarea id="txtComentario" rows="3"><?php echo $alerta_Comentario; ?></textarea>
-    </div>        
+        <textarea id="txtComentario" rows="5"><?php echo $alerta_Comentario; ?></textarea>
+    </div>
+    <div id="contenedor_Fila">
+        <div id="guardar" onclick="guardar()"></div>
+    </div>
 </div>
 <div id="statusBar">
     <a id="linkHogar" href="https://www.lasesperanzas.ed.cr">lasesperanzas.ed.cr</a>
     <a id="linkWappcom"href="https://www.wappcom.net">wappcom.net</a>                                       
 </div>
- 
+
 <script language='javascript'>
 
 var situacion_Id = <?php echo $situacion_Id;?>;
@@ -95,8 +103,20 @@ if (situacion_Id > 0) {
     situacion_Id=1;//Para que por defecto quede seleccionado la primera opcion
 }
 
+function guardar() {
+
+    var situacion_Id = <?php echo $situacion_Id;?>;
+    $('#guardar').html('<img src="img/cargando.gif">');	
+    if (situacion_Id==0)	{
+
+    } else	{
+
+    }
+}
+
 $('#salir').html('<img src="img/salir.png">');
 $('#add').html('<img src="img/add.png">');
+$('#guardar').html('<img src="img/guardar.png">');
 </script>
 </body>
 </html>

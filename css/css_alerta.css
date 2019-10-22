@@ -92,8 +92,8 @@ body {
 }
 
 #contenedor_Fila * {
-  margin: 0.5vw;
-  padding: 0.5vw;
+  margin: 0.2%;
+  padding: 0.2%;
 }
 
 #ColNombre {
@@ -129,6 +129,11 @@ body {
   color: black;
   font-family: "Lucida Console", Monaco, monospace;
   border-radius: 5px;
+}
+
+#guardar {
+  width: 4em;
+  height: 4em;
 }
 
 #statusBar {
@@ -178,6 +183,10 @@ a:active {
     margin: 0.1%;
     padding: 0.1%;
   }
+  #contenedor_Fila * {
+    margin: 0.1%;
+    padding: 0.1%;
+  }
   #ColNombre {
     width: 50%;
     font-size: 1.2em;
@@ -200,6 +209,10 @@ a:active {
             flex-grow: 0;
     -ms-flex-preferred-size: 70%;
         flex-basis: 70%;
+  }
+  #guardar {
+    width: 5em;
+    height: 5em;
   }
   #statusBar {
     margin: 0.5%;

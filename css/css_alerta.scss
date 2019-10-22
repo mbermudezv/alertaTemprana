@@ -77,8 +77,8 @@ body {
 }
 
 #contenedor_Fila * {
-    margin: 0.5vw;
-    padding: 0.5vw;
+    margin: $margenTablaMovil;
+    padding: $paddinTablaMovil;
   }
 
   #ColNombre{
@@ -107,6 +107,12 @@ body {
     font-family: "Lucida Console", Monaco, monospace;		
     border-radius: 5px;   
 }
+
+#guardar{    
+    width: 4em;
+    height: 4em;				
+}
+
 #statusBar {       
     // flex-grow: 1;
     display: flex;      
@@ -153,6 +159,11 @@ a:active {
         padding: $paddinTablaPC;  
     }
 
+    #contenedor_Fila * {
+        margin: $margenTablaPC;
+        padding: $paddinTablaPC;  
+    }
+
     #ColNombre{
         width: 50%;
         font-size: $fontPC;
@@ -174,6 +185,11 @@ a:active {
         flex-basis: 70%;
     }
     
+    #guardar{   
+        width: 5em;
+        height: 5em;      
+    }
+
     #statusBar {          
         margin: $margenPCTablaItemCol;
         padding: $paddinPCTablaItemCol;
