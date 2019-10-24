@@ -9,23 +9,24 @@ try {
     
 require_once("sql/select.php");
            
-$db = new select(); 
-
+$situacion_Id = 0;
+$alerta_Comentario="";
 $estudiante_Nombre="";
 $estudiante_PrimerApellido="";
 $estudiante_SegundoApellido=""; 
 
-if (isset($_GET['situacion'])) {  
-    $situacion_Id = $_GET['situacion'];
+$db = new select();
+$rsSituacion = $db->conSituacion();
+
+if (isset($_GET['alerta'])) {  
+    $alerta_Id = $_GET['alerta'];
 } else {
-    $situacion_Id = 0;
-    $situacion_Comentario="";
+    $alerta_Id = 0;    
 }
 
 if (isset($_GET['estudiante'])) { 
     $estudiante_Id = $_GET['estudiante'];   
-    $rsEstudiante = $db->conEstudiante($estudiante_Id);
-    $rsSituacion = $db->conSituacion();
+    $rsEstudiante = $db->conEstudiante($estudiante_Id);    
     if (!empty($rsEstudiante)) {            
         foreach ($rsEstudiante as $key => $value) {
             $estudiante_Nombre = $value['estudiante_Nombre'];
@@ -105,18 +106,37 @@ if (situacion_Id > 0) {
 
 function guardar() {
 
-    var situacion_Id = <?php echo $situacion_Id;?>;
+    var alerta_Id = <?php echo $alerta_Id; ?>;    
+    var estudiante_Id = <?php echo $estudiante_Id; ?>;
+    var alerta_Comentario = <?php echo $alerta_Comentario; ?>;
+
     $('#guardar').html('<img src="img/cargando.gif">');	
-    if (situacion_Id==0)	{
-
+    if (alerta_Id==0)	{
+        $.post("sql/insertAlertaGestor.php", {estudiante: estudiante_Id, 
+                                                situacion: situacion_Id,
+                                                alerta_Comentario: alerta_Comentario})
+        .done(function(data) { $('#guardar').html('<img src="img/guardar.png">');})
+        .fail(function(jqXHR, textStatus, error) {
+            console.log("Error de la aplicación: " + error);    			
+            $(body).append("Error al conectar con la base de datos: " + error);			
+            });	      
     } else	{
-
-    }
+        $.post("sql/updateAlertaGestor.php", {alerta: alerta_Id, 
+                                            estudiante: estudiante_Id, 
+                                            situacion: situacion_Id,
+                                            alerta_Comentario: alerta_Comentario })
+        .done(function(data) { $('#guardar').html('<img src="img/guardar.png">');})
+        .fail(function(jqXHR, textStatus, error) {
+            console.log("Error de la aplicación: " + error);    			
+            $(body).append("Error al conectar con la base de datos: " + error);                			
+            });			            
+        }
 }
 
 $('#salir').html('<img src="img/salir.png">');
 $('#add').html('<img src="img/add.png">');
 $('#guardar').html('<img src="img/guardar.png">');
+
 </script>
 </body>
 </html>
