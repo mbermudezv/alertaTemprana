@@ -14,7 +14,7 @@ class insertAlerta
 		$this->pdo = $pdo;
 	}
     
-    public function insert($estudiante_Id, $situacion_Id, $situacion_Comentario){
+    public function insert($estudiante_Id, $situacion_Id, $alerta_Comentario){
                         		
         $sql = 'INSERT INTO alerta (estudiante_Id, situacion_Id, alerta_Comentario) 
                 VALUES (:estudiante_Id, :situacion_Id, :alerta_Comentario)';

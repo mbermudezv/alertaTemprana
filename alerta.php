@@ -108,7 +108,7 @@ function guardar() {
 
     var alerta_Id = <?php echo $alerta_Id; ?>;    
     var estudiante_Id = <?php echo $estudiante_Id; ?>;
-    var alerta_Comentario = <?php echo $alerta_Comentario; ?>;
+    var alerta_Comentario = $('#txtComentario').val();
 
     $('#guardar').html('<img src="img/cargando.gif">');	
     if (alerta_Id==0)	{
