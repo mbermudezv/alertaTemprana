@@ -133,6 +133,10 @@ function guardar() {
         }
 }
 
+function eMail(alertaId) {
+    
+}
+
 $('#salir').html('<img src="img/salir.png">');
 $('#add').html('<img src="img/add.png">');
 $('#guardar').html('<img src="img/guardar.png">');

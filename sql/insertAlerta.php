@@ -30,7 +30,8 @@ class insertAlerta
             ]);				
         $stmt = null;
         $this->pdo = null;
-
+        $last = mysql_insert_id();
+        
         return 0;
 
         } catch (Exception $e) {
