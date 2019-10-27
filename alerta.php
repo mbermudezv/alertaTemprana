@@ -112,6 +112,7 @@ function guardar() {
 
     $('#guardar').html('<img src="img/cargando.gif">');	
     if (alerta_Id==0)	{
+        
         $.post("sql/insertAlertaGestor.php", {estudiante: estudiante_Id, 
                                                 situacion: situacion_Id,
                                                 alerta_Comentario: alerta_Comentario})
@@ -131,10 +132,6 @@ function guardar() {
             $(body).append("Error al conectar con la base de datos: " + error);                			
             });			            
         }
-}
-
-function eMail(alertaId) {
-    
 }
 
 $('#salir').html('<img src="img/salir.png">');

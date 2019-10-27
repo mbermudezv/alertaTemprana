@@ -12,7 +12,8 @@ try {
 		 
 	$db = new insertAlerta();
     $db-> insert($estudiante_Id, $situacion_Id, $alerta_Comentario);
-	$db = null;	
+	$db = null;
+	
 } 
 catch (Exception $e) {		
 	console.log("Error de la aplicación: " + $e->getMessage());
