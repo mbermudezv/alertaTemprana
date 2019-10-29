@@ -1,12 +1,30 @@
 
 <?php
 
-
 header('Content-Type: text/html; charset=utf-8');
 require_once("sql/select.php");
+require_once 'sql/conexion.php';
+
+$estudiante_Id = 1;
+$situacion_Id = 1;
+$alerta_Comentario = "Prueba en liceo";
+
+
+$pdo = new \PDO(DB_Str, DB_USER, DB_PASS);		
+$this->pdo = $pdo;
+$sql = 'INSERT INTO alerta (estudiante_Id, situacion_Id, alerta_Comentario) VALUES (?,?,?)';
+$stmt= $pdo->prepare($sql);
+$stmt->execute([$estudiante_Id, $situacion_Id, $alerta_Comentario]);
+$last = $this->pdo->lastInsertId();
+
+$subject = "";
+$htmlContent = "";
+$headers = "";
+$liceo_Email = "mauriciobermudez@hotmail.com";
 
  $db = new select();
- $rsAlerta = $db->conAlertaEmail(1);
+ $rsAlerta = $db->conAlertaEmail($last);
+ 
  if (!empty($rsAlerta)) {            
      foreach ($rsAlerta as $key => $value) {
                          
@@ -32,7 +50,7 @@ require_once("sql/select.php");
          $htmlContent .= 
          '</body>
          </html>';                        
-         //mail($liceo_Email,$subject,$htmlContent,$headers);         
+         //mail($liceo_Email,$subject,$htmlContent,$headers);
          echo  $htmlContent. "\r\n";
      }
  }                                    
