@@ -11,12 +11,12 @@ $alerta_Comentario = "Prueba en liceo";
 
 
 $pdo = new \PDO(DB_Str, DB_USER, DB_PASS);		
-$this->pdo = $pdo;
+//$this->pdo = $pdo;
 $sql = 'INSERT INTO alerta (estudiante_Id, situacion_Id, alerta_Comentario) VALUES (?,?,?)';
 $stmt= $pdo->prepare($sql);
 $stmt->execute([$estudiante_Id, $situacion_Id, $alerta_Comentario]);
-$last = $this->pdo->lastInsertId();
-
+$last = $pdo->lastInsertId();
+echo $last;
 $subject = "";
 $htmlContent = "";
 $headers = "";
