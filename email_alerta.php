@@ -79,6 +79,6 @@ if(!empty($rsAlerta)) {
 $rsAlerta = null;
 $db = null;     
 
-echo  $htmlContent. "\r\n";
+//echo  $htmlContent. "\r\n";
 
 ?>
