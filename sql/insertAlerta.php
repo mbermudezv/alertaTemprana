@@ -30,12 +30,13 @@ class insertAlerta {
             ':situacion_Id' => $situacion_Id,
             ':alerta_Comentario' => $alerta_Comentario       
             ]);
-        $last = (int)$this->pdo->lastInsertId();        
+        $last = $this->pdo->lastInsertId();        
         $this->pdo->commit();     
                                     
         $stmt = null;
         $this->pdo = null;
-        return $last;    
+                
+        return $last; 
         
     } catch (\Throwable $th) {
                 echo "Error al enviar email: " . $th->getMessage() . "\n";				

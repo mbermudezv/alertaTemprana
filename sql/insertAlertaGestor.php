@@ -2,8 +2,8 @@
 /**
 * Mauricio Bermudez Vargas 22/10/2019 6:00 p.m.
 */
-require_once 'insertAlerta.php';
-require_once 'testClass.php';
+//require_once 'insertAlerta.php';
+require_once 'conexion.php';
 
 try {
     
@@ -11,13 +11,23 @@ try {
     $situacion_Id = $_GET['situacion'];    
     $alerta_Comentario = $_GET['alerta_Comentario'];
 		 
-	$db = new insertAlerta();
-    $db-> insert($estudiante_Id, $situacion_Id, $alerta_Comentario);
+	//$db = new insertAlerta();
+    //$db-> insert($estudiante_Id, $situacion_Id, $alerta_Comentario);
 	//$db = null;
-	//$myAssociativeArray = json_decode(json_encode($db), true);// Converts the object to an associative array
-	echo (int)$db;
 
-							
+	$pdo = new \PDO(DB_Str, DB_USER, DB_PASS);		
+	//$this->pdo = $pdo;
+	$sql = 'INSERT INTO alerta (estudiante_Id, situacion_Id, alerta_Comentario) VALUES (?,?,?)';
+	$stmt= $pdo->prepare($sql);
+	//$stmt= $pdo->beginTransaction();
+	$stmt->execute([$estudiante_Id, $situacion_Id, $alerta_Comentario]);
+	$last = $pdo->lastInsertId();
+	//$stmt= $pdo->commit();
+	
+	$stmt = null;
+	$pdo = null;
+
+	echo $last;
 } 
 catch (Exception $e) {		
 	console.log("Error de la aplicación: " + $e->getMessage());
