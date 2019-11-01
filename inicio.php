@@ -26,7 +26,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" type="text/css" media="screen" href="css/css_inicio.css" /> 
-    <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>    
 </head>
 <body>
 <div id="menu">
@@ -46,14 +46,42 @@ try {
             ?>
         </select>
     </div>
-
+    <div id="contenedor_Fila">
+        <select id="cboMes" class="txtDescripcion" onchange="getval(this.value);">
+        <?php
+            foreach($rsSeccion as $cc => $name) {
+                echo '<option value="' . "1" . '">' . "Enero" . '</option>';
+                echo '<option value="' . "2" . '">' . "Febrero" . '</option>';
+                echo '<option value="' . "3" . '">' . "Marzo" . '</option>';
+                echo '<option value="' . "4" . '">' . "Abril" . '</option>';
+                echo '<option value="' . "5" . '">' . "Mayo" . '</option>';
+                echo '<option value="' . "6" . '">' . "Junio" . '</option>';
+                echo '<option value="' . "7" . '">' . "Julio" . '</option>';
+                echo '<option value="' . "8" . '">' . "Agosto" . '</option>';
+                echo '<option value="' . "9" . '">' . "Setiembre" . '</option>';
+                echo '<option value="' . "10" . '">' . "Octubre" . '</option>';
+                echo '<option value="' . "11" . '">' . "Noviembre" . '</option>';
+                echo '<option value="' . "11" . '">' . "Diciembre" . '</option>';
+            }
+        ?>
+        </select>                
+    </div>
+    <div id="contenedor_Fila">
+        <div id="btnbuscar" onclick="buscar();"></div>
+    </div>
 </div>
 </body>
-<script>
-    $('#salir').html('<img src="img/salir.png">');
-    $('#hyp_reporte').html('<img src=img/excel.png>');
-    $('#add').html('<img src="img/add.png">');
-    
-    
+<script language='javascript'>
+
+function buscar() {
+
+
+}
+
+$('#salir').html('<img src="img/salir.png">');
+$('#hyp_reporte').html('<img src=img/excel.png>');
+$('#add').html('<img src="img/add.png">'); 
+$('#btnbuscar').html('<img src="img/refresh.png">');
+
 </script>
 </html>

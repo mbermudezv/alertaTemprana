@@ -72,8 +72,8 @@ body {
 }
 
 #add {
-  width: 2em;
-  height: 2em;
+  width: 5em;
+  height: 5em;
 }
 
 #contenedor_Fila {
@@ -87,28 +87,57 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 0.2%;
-  padding: 0.2%;
+  margin: 0.5%;
+  padding: 0.5%;
 }
 
 #contenedor_Fila * {
-  margin: 0.2%;
-  padding: 0.2%;
+  margin: 0.5%;
+  padding: 0.5%;
 }
 
 .txtDescripcion {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
   background-color: black;
   color: white;
   font-family: "Lucida Console", Monaco, monospace;
+  font-size: 1.2em;
 }
 
 #cboSeccion {
-  -ms-flex-preferred-size: 75%;
-      flex-basis: 75%;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
   text-align-last: center;
+}
+
+#cboMes {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  text-align-last: center;
+}
+
+#btnbuscar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  margin: 1vw;
+  padding: 1vw;
+}
+
+#btnbuscar * {
+  width: 3em;
+  height: 3em;
+  background: white;
+  border-radius: 50%;
 }
 
 #statusBar {
@@ -165,6 +194,14 @@ a:active {
   #cboSeccion {
     -ms-flex-preferred-size: 25%;
         flex-basis: 25%;
+  }
+  #cboMes {
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+  }
+  #btnbuscar * {
+    width: 4em;
+    height: 4em;
   }
   .txtDescripcion {
     -webkit-box-flex: 0;

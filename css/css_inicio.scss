@@ -5,8 +5,8 @@ $paddinMovilTablaItem : 0.50%;
 $fontMovil: 1em;
 $fontPC: 1.2em;
 //tabla
-$margenTablaMovil : 0.20%;
-$paddinTablaMovil : 0.20%;
+$margenTablaMovil : 0.50%;
+$paddinTablaMovil : 0.50%;
 $margenTablaPC : 0.10%;
 $paddinTablaPC : 0.10%;
 //Col
@@ -64,8 +64,8 @@ body {
 }
 
 #add {
-    width: 2em;
-    height: 2em;    
+    width: 5em;
+    height: 5em;    
 }
 
 #contenedor_Fila {
@@ -82,16 +82,36 @@ body {
 }
 
 .txtDescripcion {
-    //flex-grow: 0;
+    flex-grow: 0;
     align-self: center;
 	background-color: black;
 	color: white;	
-	font-family: "Lucida Console", Monaco, monospace;    
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 1.2em;    
 }
 
 #cboSeccion {    
-    flex-basis: 75%;
+    flex-basis: 50%;
     text-align-last:center;
+}
+
+#cboMes {    
+    flex-basis: 50%;
+    text-align-last:center;
+}
+
+#btnbuscar {        
+    display: flex;
+    flex-flow: row wrap;    
+    margin: 1vw;
+    padding: 1vw;
+}
+
+#btnbuscar * {
+    width: 3em;
+    height: 3em;    
+	background: white;
+	border-radius: 50%;	
 }
 
 #statusBar {       
@@ -105,7 +125,6 @@ body {
     font-family: "Lucida Console", Monaco, monospace;	
     font-size: $fontMovil; 
 }
-
 
 a:link {
     text-decoration: none;
@@ -147,6 +166,15 @@ a:active {
 
     #cboSeccion {    
         flex-basis: 25%;
+    }
+
+    #cboMes {    
+        flex-basis: 25%;        
+    }
+
+    #btnbuscar * {
+        width: 4em;
+        height: 4em;           
     }
 
     .txtDescripcion {

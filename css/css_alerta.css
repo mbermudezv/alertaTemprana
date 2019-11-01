@@ -72,8 +72,8 @@ body {
 }
 
 #add {
-  width: 2em;
-  height: 2em;
+  width: 5em;
+  height: 5em;
 }
 
 #contenedor_Fila {
@@ -87,13 +87,13 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 0.2%;
-  padding: 0.2%;
+  margin: 0.55%;
+  padding: 0.55%;
 }
 
 #contenedor_Fila * {
-  margin: 0.2%;
-  padding: 0.2%;
+  margin: 0.55%;
+  padding: 0.55%;
 }
 
 #ColNombre {
