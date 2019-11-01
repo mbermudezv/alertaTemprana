@@ -66,7 +66,7 @@ class select {
 
 	function conAlertaEmail($id){
 
-		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS);
+		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS , array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 		if ($pdo != null) {		
 			$sql = $pdo->query('SELECT situacion_Nombre, estudiante_Nombre, 
 			estudiante_PrimerApellido, estudiante_SegundoApellido, alerta_Comentario FROM alerta 
@@ -88,6 +88,24 @@ class select {
 		}	
 		$pdo = null;
 	}
+
+	function conSeccion(){
+		
+		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS , array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));			
+		if ($pdo != null){		
+			$sql = $pdo->query('SELECT * FROM seccion');
+			$rs = [];
+			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+					$rs[] = [
+						'seccion_Id' => $row['seccion_Id'],	                
+						'seccion_Descripcion' => $row['seccion_Descripcion']				
+					];	
+			}
+			return $rs;
+		}	
+		$pdo = null;
+	}
+
 }
 
 ?>

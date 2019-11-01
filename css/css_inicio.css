@@ -96,6 +96,21 @@ body {
   padding: 0.2%;
 }
 
+.txtDescripcion {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  background-color: black;
+  color: white;
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+#cboSeccion {
+  -ms-flex-preferred-size: 75%;
+      flex-basis: 75%;
+  text-align-last: center;
+}
+
 #statusBar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -146,6 +161,16 @@ a:active {
   #contenedor_Fila * {
     margin: 0.1%;
     padding: 0.1%;
+  }
+  #cboSeccion {
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+  }
+  .txtDescripcion {
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    font-size: 1.2em;
   }
   #statusBar {
     margin: 0.5%;

@@ -4,6 +4,16 @@ error_reporting(E_ALL);
 ini_set('display_errors', true);
 ini_set('html_errors', true);
 ini_set('display_errors', true);
+require_once("sql/select.php");
+
+try {
+    $db = new select();
+    $rsSeccion = $db->conSeccion();
+
+} catch (PDOException $e) {		
+	echo "Error al conectar con la base de datos: " . $e->getMessage() . "\n";
+	exit;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,6 +37,16 @@ ini_set('display_errors', true);
     <div id="contenedor_Fila">
         <a id="add" href="alerta.php"></a>
     </div>
+    <div id="contenedor_Fila">
+        <select id="cboSeccion" class="txtDescripcion" onchange="getval(this.value);">
+            <?php
+            foreach($rsSeccion as $cc => $name) {
+                echo '<option value="' . $name['seccion_Id'] . '">' . $name['seccion_Descripcion'] . '</option>';
+            }
+            ?>
+        </select>
+    </div>
+
 </div>
 </body>
 <script>

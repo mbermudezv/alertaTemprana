@@ -81,6 +81,19 @@ body {
     padding: $paddinTablaMovil;
 }
 
+.txtDescripcion {
+    //flex-grow: 0;
+    align-self: center;
+	background-color: black;
+	color: white;	
+	font-family: "Lucida Console", Monaco, monospace;    
+}
+
+#cboSeccion {    
+    flex-basis: 75%;
+    text-align-last:center;
+}
+
 #statusBar {       
     // flex-grow: 1;
     display: flex;      
@@ -131,7 +144,16 @@ a:active {
         margin: $margenTablaPC;
         padding: $paddinTablaPC;  
     }
-    
+
+    #cboSeccion {    
+        flex-basis: 25%;
+    }
+
+    .txtDescripcion {
+        flex-grow: 0;
+        font-size: 1.2em;
+    }
+
     #statusBar {          
         margin: $margenPCTablaItemCol;
         padding: $paddinPCTablaItemCol;
