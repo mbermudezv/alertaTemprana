@@ -61,7 +61,7 @@ try {
                 echo '<option value="' . "9" . '">' . "Setiembre" . '</option>';
                 echo '<option value="' . "10" . '">' . "Octubre" . '</option>';
                 echo '<option value="' . "11" . '">' . "Noviembre" . '</option>';
-                echo '<option value="' . "11" . '">' . "Diciembre" . '</option>';
+                echo '<option value="' . "12" . '">' . "Diciembre" . '</option>';
             }
         ?>
         </select>                

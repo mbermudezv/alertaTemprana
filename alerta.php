@@ -82,7 +82,7 @@ if (isset($_GET['estudiante'])) {
     <div id="contenedor_Fila">
         <div id="guardar" onclick="guardar()"></div>
     </div>
-    <div id="test"> </div>
+    <!-- <div id="test"> </div> -->
 </div>
 <div id="statusBar">
     <a id="linkHogar" href="https://www.lasesperanzas.ed.cr">lasesperanzas.ed.cr</a>
@@ -109,7 +109,7 @@ function guardar() {
 
     var alerta_Id = <?php echo $alerta_Id; ?>;    
     var estudiante_Id = <?php echo $estudiante_Id; ?>;
-    var alerta_Comentario = $('#txtComentario').val();
+    var alerta_Comentario = $('#txtComentario').val();    
 
     $('#guardar').html('<img src="img/cargando.gif">');	
     if (alerta_Id==0)	{

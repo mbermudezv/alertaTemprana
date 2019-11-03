@@ -106,6 +106,31 @@ class select {
 		$pdo = null;
 	}
 
+	function conAlertaTemprana($id){
+
+		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS , array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+		if ($pdo != null) {		
+			$sql = $pdo->query('SELECT situacion_Nombre, estudiante_Nombre, 
+			estudiante_PrimerApellido, estudiante_SegundoApellido, alerta_Comentario FROM alerta 
+			INNER JOIN situacion 
+			ON alerta.situacion_Id = situacion.situacion_Id 
+			INNER JOIN estudiante 
+			ON alerta.estudiante_Id = estudiante.estudiante_Id WHERE estudiante.seccion_Id ='.$id.'');
+			$rs = [];
+			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+					$rs[] = [
+						'situacion_Nombre' => $row['situacion_Nombre'],	                
+						'estudiante_Nombre' => $row['estudiante_Nombre'],
+						'estudiante_PrimerApellido' => $row['estudiante_PrimerApellido'],
+						'estudiante_SegundoApellido' => $row['estudiante_SegundoApellido'],
+						'alerta_Comentario' => $row['alerta_Comentario']						
+					];	
+			}
+			return $rs;
+		}	
+		$pdo = null;
+	}
+
 }
 
 ?>

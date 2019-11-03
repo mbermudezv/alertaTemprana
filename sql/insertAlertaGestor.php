@@ -9,25 +9,27 @@ try {
     
     $estudiante_Id = $_GET['estudiante'];   
     $situacion_Id = $_GET['situacion'];    
-    $alerta_Comentario = $_GET['alerta_Comentario'];
-		 
+	$alerta_Comentario = $_GET['alerta_Comentario'];	
+	
+	date_default_timezone_set('America/Costa_Rica');		
+	$alerta_Fecha = date_create('now')->format('Y-m-d H:i:s');
 	//$db = new insertAlerta();
     //$db-> insert($estudiante_Id, $situacion_Id, $alerta_Comentario);
 	//$db = null;
 
 	$pdo = new \PDO(DB_Str, DB_USER, DB_PASS);		
 	//$this->pdo = $pdo;
-	$sql = 'INSERT INTO alerta (estudiante_Id, situacion_Id, alerta_Comentario) VALUES (?,?,?)';
+	$sql = 'INSERT INTO alerta (estudiante_Id, situacion_Id, alerta_Comentario, alerta_Fecha) VALUES (?,?,?,?)';
 	$stmt= $pdo->prepare($sql);
 	//$stmt= $pdo->beginTransaction();
-	$stmt->execute([$estudiante_Id, $situacion_Id, $alerta_Comentario]);
+	$stmt->execute([$estudiante_Id, $situacion_Id, $alerta_Comentario, $alerta_Fecha]);
 	$last = $pdo->lastInsertId();
 	//$stmt= $pdo->commit();
 	
 	$stmt = null;
 	$pdo = null;
 
-	echo $last;
+	echo $last; // no se puede convertir lastInsertId() a int o str desde la clase InsertAlerta
 } 
 catch (Exception $e) {		
 	console.log("Error de la aplicación: " + $e->getMessage());
