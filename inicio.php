@@ -26,7 +26,9 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" type="text/css" media="screen" href="css/css_inicio.css" /> 
-    <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>    
+    <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
+    <script src="js/inicio.js"></script>
+           
 </head>
 <body>
 <div id="menu">
@@ -38,7 +40,7 @@ try {
         <a id="add" href="alerta.php"></a>
     </div>
     <div id="contenedor_Fila">
-        <select id="cboSeccion" class="txtDescripcion" onchange="getval(this.value);">
+        <select id="cboSeccion" class="txtDescripcion" onchange="getvalSeccion(this.value);">
             <?php
             foreach($rsSeccion as $cc => $name) {
                 echo '<option value="' . $name['seccion_Id'] . '">' . $name['seccion_Descripcion'] . '</option>';
@@ -47,7 +49,7 @@ try {
         </select>
     </div>
     <div id="contenedor_Fila">
-        <select id="cboMes" class="txtDescripcion" onchange="getval(this.value);">
+        <select id="cboMes" class="txtDescripcion" onchange="getvalFecha(this.value);">
         <?php
             foreach($rsSeccion as $cc => $name) {
                 echo '<option value="' . "1" . '">' . "Enero" . '</option>';
@@ -69,13 +71,30 @@ try {
     <div id="contenedor_Fila">
         <div id="btnbuscar" onclick="buscar();"></div>
     </div>
+    
+    <template>
+    <div id="contenedor_Template">            
+        <a id="ColNombre" class="Col"></a>
+        <a id="ColSituacion" class="Col"></a> 
+    </div>             
+    </template>
+        
 </div>
 </body>
 <script language='javascript'>
 
-function buscar() {
+var seccion_Id = 1;
+var mes = 11; 
+cargaAlerta(seccion_Id,mes);
 
+function getvalSeccion(sel) {             
+        //alert(sel);
+        seccion_Id = sel;           
+}
 
+function getvalFecha(sel) {             
+        //alert(sel);
+        mes = sel;           
 }
 
 $('#salir').html('<img src="img/salir.png">');

@@ -106,24 +106,26 @@ class select {
 		$pdo = null;
 	}
 
-	function conAlertaTemprana($id){
+	function conAlertaTemprana($seccion_Id, $alerta_Fecha){
 
 		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS , array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 		if ($pdo != null) {		
-			$sql = $pdo->query('SELECT situacion_Nombre, estudiante_Nombre, 
+			$sql = $pdo->query('SELECT alerta_Id, situacion_Nombre, estudiante_Nombre, 
 			estudiante_PrimerApellido, estudiante_SegundoApellido, alerta_Comentario FROM alerta 
 			INNER JOIN situacion 
 			ON alerta.situacion_Id = situacion.situacion_Id 
 			INNER JOIN estudiante 
-			ON alerta.estudiante_Id = estudiante.estudiante_Id WHERE estudiante.seccion_Id ='.$id.'');
+			ON alerta.estudiante_Id = estudiante.estudiante_Id 
+			WHERE estudiante.seccion_Id ='.$seccion_Id.' AND Month(alerta_Fecha) = '.$alerta_Fecha.' ');
 			$rs = [];
 			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
-					$rs[] = [
+					$rs[] = [						
 						'situacion_Nombre' => $row['situacion_Nombre'],	                
 						'estudiante_Nombre' => $row['estudiante_Nombre'],
 						'estudiante_PrimerApellido' => $row['estudiante_PrimerApellido'],
 						'estudiante_SegundoApellido' => $row['estudiante_SegundoApellido'],
-						'alerta_Comentario' => $row['alerta_Comentario']						
+						'alerta_Comentario' => $row['alerta_Comentario'],
+						'alerta_Id' => $row['alerta_Id']												
 					];	
 			}
 			return $rs;

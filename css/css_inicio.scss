@@ -81,6 +81,19 @@ body {
     padding: $paddinTablaMovil;
 }
 
+#contenedor_Template
+{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;    
+    margin: $margenTablaMovil;
+    padding: $paddinTablaMovil;   
+}
+#contenedor_Template * {
+    margin: $margenTablaMovil;
+    padding: $paddinTablaMovil;
+}
+
 .txtDescripcion {
     flex-grow: 0;
     align-self: center;
@@ -114,6 +127,16 @@ body {
 	border-radius: 50%;	
 }
 
+.Col {    
+    flex-basis: 90%;
+    background-color: transparent;
+	font-family: "Lucida Console", Monaco, monospace;	
+	color: white;
+    font-size: $fontMovil;
+    margin: $margenMovilTablaItemCol;
+    padding: $paddinMovilTablaItemCol;
+    text-decoration: none;           
+}
 #statusBar {       
     // flex-grow: 1;
     display: flex;      
@@ -181,7 +204,9 @@ a:active {
         flex-grow: 0;
         font-size: 1.2em;
     }
-
+    .Col {
+        flex-basis: 20%;
+    }
     #statusBar {          
         margin: $margenPCTablaItemCol;
         padding: $paddinPCTablaItemCol;
