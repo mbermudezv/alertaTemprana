@@ -64,6 +64,23 @@ class select {
 		$pdo = null;
 	}
 
+	function conParametros(){
+		
+		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS , array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));			
+		if ($pdo != null){		
+			$sql = $pdo->query('SELECT * FROM parametros');
+			$rs = [];
+			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+					$rs[] = [
+						'centroEducativo' => $row['centroEducativo'],	                
+						'direccionRegional' => $row['direccionRegional']				
+					];	
+			}
+			return $rs;
+		}	
+		$pdo = null;
+	}
+
 	function conAlertaEmail($id){
 
 		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS , array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
@@ -98,6 +115,25 @@ class select {
 			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
 					$rs[] = [
 						'seccion_Id' => $row['seccion_Id'],	                
+						'seccion_Descripcion' => $row['seccion_Descripcion']				
+					];	
+			}
+			return $rs;
+		}	
+		$pdo = null;
+	}
+
+	function conSeccionProfesor($Id){
+		
+		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS , array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));			
+		if ($pdo != null){		
+			$sql = $pdo->query('SELECT * FROM seccion INNER JOIN profesor 
+								ON seccion.profesor_Id = profesor.profesor_Id where seccion_Id='. $Id);
+			$rs = []; 
+			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+					$rs[] = [
+						'seccion_Id' => $row['seccion_Id'],	                
+						'seccion_Descripcion' => $row['seccion_Descripcion'],
 						'seccion_Descripcion' => $row['seccion_Descripcion']				
 					];	
 			}
