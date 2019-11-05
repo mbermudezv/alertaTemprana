@@ -33,7 +33,7 @@ try {
 <body>
 <div id="menu">
     <a id="salir" href="https://www.lasesperanzas.ed.cr"></a>
-    <a id="hyp_reporte" href="excel_alerta.php"></a>
+    <a id="hyp_reporte" href="excel_alerta.php?seccion=1&mes=11"></a>
 </div>
 <div id="mainArea">
     <div id="contenedor_Fila">
@@ -84,7 +84,8 @@ try {
 <script language='javascript'>
 
 var seccion_Id = 1;
-var mes = 11; 
+var mes = 11;
+
 cargaAlerta(seccion_Id,mes);
 
 function getvalSeccion(sel) {             

@@ -24,8 +24,7 @@ $reporte_Fecha = date_create('now')->format('Y-m-d H:i:s');
 
 try {
 
-    $db = new select();
-    
+    $db = new select();    
     $rsAlerta = $db->conAlertaTemprana($seccion_Id, $alerta_Fecha);
     $rsParamatros = $db->conParametros();
     $rsSeccion = $db->conSeccionProfesor($seccion_Id);
@@ -48,12 +47,7 @@ try {
             $seccion_Descripcion = $value['seccion_Descripcion'];           
         }
     }
-
-    } catch (PDOException $e) {		
-        echo "Error al conectar con la base de datos: " . $e->getMessage() . "\n";
-        exit;
-    }
-                             
+                            
     $archivo = 'Alerta-'.date("d/m/Y");
     $extension = '.xls';
     header("Content-type: application/vnd.ms-excel");
@@ -74,19 +68,17 @@ try {
 <title>Exportar</title>
 </head>  
 <body>
-
 <center><h2>ALERTA TEMPRANA</h2></center>
-    <table border="1" align="left" cellpadding="5">
-        <tr><td width="50%">Centro Educativo:</td><td><?php echo $centroEducativo ?></td></tr>
-        <tr><td>Profesor guía:</td><td><?php echo $profesor_Nombre. " " . $profesor_Apellido1 . " " . $profesor_Apellido2 ?></td></tr>
-        <tr><td>Sección:</td><td align="center"><?php echo $seccion_Descripcion?></td></tr>
-        <tr><td>Cantidad de estudiantes:</td><td align="right"><?php echo $seccion_Cantidad?></td></tr>
-        <tr><td>Direción Regional:</td><td align="left"><?php echo $direccionRegional?></td></tr>
-        <tr><td>Mes:</td><td align="center"><?php echo $alerta_Fecha?></td></tr>
-        <tr><td>Fecha reporte:</td><td align="center"><?php echo $reporte_Fecha?></td></tr>
-    </table> 
+<table border="1" align="left" cellpadding="5">
+    <tr><td width="50%">Centro Educativo:</td><td><?php echo $centroEducativo ?></td></tr>
+    <tr><td>Profesor guía:</td><td><?php echo $profesor_Nombre. " " . $profesor_Apellido1 . " " . $profesor_Apellido2 ?></td></tr>
+    <tr><td>Sección:</td><td align="center"><?php echo $seccion_Descripcion?></td></tr>
+    <tr><td>Cantidad de estudiantes:</td><td align="right"><?php echo $seccion_Cantidad?></td></tr>
+    <tr><td>Direción Regional:</td><td align="left"><?php echo $direccionRegional?></td></tr>
+    <tr><td>Mes:</td><td align="center"><?php echo $alerta_Fecha?></td></tr>
+    <tr><td>Fecha reporte:</td><td align="center"><?php echo $reporte_Fecha?></td></tr>
+</table> 
 <?php
-
     if(!empty($rsAlerta)) {
            
         foreach($rsAlerta as $key => $valuePago) {
@@ -99,39 +91,27 @@ try {
 ?>   
     <table border="1" align="left" cellpadding="5">
         <tr>         
-
+            <td width="50%">Nombre del estudiante:</td>
+            <td>Situación detectada:</td>
         <tr>
-            <td width="50%">Nombre del estudiante:</td><td><?php echo $estudiante_Nombre . " " . $estudiante_PrimerApellido. " ". $estudiante_SegundoApellido?></td>
-            <td>Situación detectada:</td><td><?php echo $puesto_Nombre ?></td>
+            <td><?php echo $estudiante_Nombre . " " . $estudiante_PrimerApellido. " ". $estudiante_SegundoApellido?></td>
+            <td><?php echo $situacion_Nombre?> </td>            
         </tr>
-        <tr></tr>
-        <tr><td>Período de pago:</td><td align="center"><?php echo $periodo_Descripcion?></td></tr>
-        <tr><td>Salario:</td><td align="right"><?php echo number_format($trabajador_Salario,2,".",",")?></td></tr>
-        <tr><td align="center">Más + </td><td></td></tr>
-        <tr><td>Horas extras:</td><td align="right"><?php echo number_format($pago_HoraExtra,2,".",",")?></td></tr>
-        <tr><td>Feriados:</td><td align="right"><?php echo number_format($pago_Feriado,2,".",",")?></td></tr>
-        <tr><td>Otros:</td><td align="right"><?php echo number_format($pago_OtrosIngresos,2,".",",")?></td></tr>
-        <tr><td align="center">Ménos - </td><td></td></tr>
-        <tr><td>CCSS 9.34%:</td><td align="right"><?php echo number_format($pago_CCSS,2,".",",")?></td></tr>
-        <tr><td>Rebajos:</td><td align="right"><?php echo number_format($pago_Rebajos,2,".",",")?></td></tr>
-        <tr><td>Otros:</td><td align="right"><?php echo number_format($pago_OtrosRebajos,2,".",",")?></td></tr>
-        <tr><td></td><td></td></tr>
-        <tr><td>SALARIO NETO A DEPOSITAR:</td><td align="right"><?php echo $total?></td></tr>                    
-    </table>
-    <table align="center" cellpadding="5">
-        <tr><td></td><td></td></tr>         
-        <tr><td width="50%">Firma del trabajador:</td><td align="center">____________________________</td></tr>
-        <tr><td>Cédula:</td><td align="center"><?php echo $trabajador_Cedula?></td></tr>
-        <tr><td></td><td></td></tr>
-        <tr><td>Observaciones:</td><td><?php echo $pago_Comentario?></td></tr>
     </table>
 <?php
         } 
     }
 
-    $rsPago = null;       
-
+$rsAlerta = null;
+$rsParamatros = null;
+$rsSeccion = null;
 $db = null;
-?>        
+
+?>       
+<table align="center" cellpadding="5">
+    <tr><td></td><td></td></tr>         
+    <tr><td width="50%">Firma del profesor:</td><td align="center">____________________________</td></tr>
+    <tr><td>Nombre profesor </td><td align="center"><?php echo $profesor_Nombre. " " . $profesor_Apellido1 . " " . $profesor_Apellido2 ?></td></tr>    
+</table> 
 </body>
 </html>
