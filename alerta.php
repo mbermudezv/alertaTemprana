@@ -13,7 +13,8 @@ $situacion_Id = 0;
 $alerta_Comentario="";
 $estudiante_Nombre="";
 $estudiante_PrimerApellido="";
-$estudiante_SegundoApellido=""; 
+$estudiante_SegundoApellido="";
+$estudiante_Descripcion=""; 
 
 $db = new select();
 $rsSituacion = $db->conSituacion();
@@ -32,10 +33,12 @@ if (isset($_GET['estudiante'])) {
             $estudiante_Nombre = $value['estudiante_Nombre'];
             $estudiante_PrimerApellido = $value['estudiante_PrimerApellido'];
             $estudiante_SegundoApellido = $value['estudiante_SegundoApellido'];
-        }                      
+        }
+        $estudiante_Descripcion = $estudiante_Nombre . " " . $estudiante_PrimerApellido . " " . $estudiante_SegundoApellido;                      
     }            
 } else {
     $estudiante_Id = 0;
+    $estudiante_Descripcion = "Seleccione el estudiante";
 }
 
 } catch (PDOException $e) {		
@@ -65,7 +68,7 @@ if (isset($_GET['estudiante'])) {
         <a id="add" href="busca_Estudiante.php"></a>
     </div>
     <div id="contenedor_Fila">
-        <div id="ColNombre"> <?php echo $estudiante_Nombre . " " . $estudiante_PrimerApellido . " " . $estudiante_SegundoApellido ?> </div>
+        <div id="ColNombre"> <?php echo $estudiante_Descripcion; ?> </div>
     </div>
     <div id="contenedor_Fila">
         <select id="cboPuesto" class="txtDescripcion" onchange="getval(this.value);">
@@ -110,6 +113,11 @@ function guardar() {
     var alerta_Id = <?php echo $alerta_Id; ?>;    
     var estudiante_Id = <?php echo $estudiante_Id; ?>;
     var alerta_Comentario = $('#txtComentario').val();    
+
+    if (estudiante_Id == 0) {
+        alert("Seleccione el estudiante");
+        return;
+    }
 
     $('#guardar').html('<img src="img/cargando.gif">');	
     if (alerta_Id==0)	{

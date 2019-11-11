@@ -128,12 +128,16 @@ class select {
 		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS , array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));			
 		if ($pdo != null){		
 			$sql = $pdo->query('SELECT * FROM seccion INNER JOIN profesor 
-								ON seccion.profesor_Id = profesor.profesor_Id where seccion_Id='. $Id);
+								ON seccion.profesor_Id = profesor.profesor_Id WHERE seccion_Id='. $Id);
 			$rs = []; 
 			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
 					$rs[] = [
 						'seccion_Id' => $row['seccion_Id'],	                
 						'seccion_Descripcion' => $row['seccion_Descripcion'],
+						'profesor_Nombre' => $row['profesor_Nombre'],
+						'profesor_Apellido1' => $row['profesor_Apellido1'],
+						'profesor_Apellido2' => $row['profesor_Apellido2'],
+						'seccion_Cantidad' => $row['seccion_Cantidad'],
 						'seccion_Descripcion' => $row['seccion_Descripcion']				
 					];	
 			}

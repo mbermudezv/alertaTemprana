@@ -27,13 +27,12 @@ try {
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" type="text/css" media="screen" href="css/css_inicio.css" /> 
     <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
-    <script src="js/inicio.js"></script>
-           
+    <script src="js/inicio.js"></script>  
 </head>
 <body>
 <div id="menu">
     <a id="salir" href="https://www.lasesperanzas.ed.cr"></a>
-    <a id="hyp_reporte" href="excel_alerta.php?seccion=1&mes=11"></a>
+    <a id="hyp_reporte" href="#" onclick='javascript:window.location.replace("excel_alerta.php?seccion=" + seccion_Id + "&mes=" + mes)'></a>
 </div>
 <div id="mainArea">
     <div id="contenedor_Fila">
@@ -69,7 +68,7 @@ try {
         </select>                
     </div>
     <div id="contenedor_Fila">
-        <div id="btnbuscar" onclick="buscar();"></div>
+        <div id="btnbuscar" onclick="cargaAlerta(seccion_Id,mes);"></div>
     </div>
     
     <template>
@@ -82,11 +81,17 @@ try {
 </div>
 </body>
 <script language='javascript'>
-
-var seccion_Id = 1;
-var mes = 11;
+ 
+var cboSeccion = document.getElementById('cboSeccion');
+var cboMes = document.getElementById('cboMes');
+var seccion_Id = cboSeccion.options[cboSeccion.selectedIndex].value;
+var mes = cboMes.options[cboMes.selectedIndex].value;
 
 cargaAlerta(seccion_Id,mes);
+
+function getvalhref() {                 
+    return "excel_alerta.php?seccion=" + seccion_Id + "&mes=" + mes;                
+}
 
 function getvalSeccion(sel) {             
         //alert(sel);

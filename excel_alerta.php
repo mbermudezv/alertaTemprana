@@ -27,24 +27,25 @@ try {
     $db = new select();    
     $rsAlerta = $db->conAlertaTemprana($seccion_Id, $alerta_Fecha);
     $rsParamatros = $db->conParametros();
+    //$dbSeccion = new select();
     $rsSeccion = $db->conSeccionProfesor($seccion_Id);
-
+    
     if (!empty($rsParamatros)) {            
-        foreach ($rsParamatros as $key => $value) {
+        foreach ($rsParamatros as $keyParamatros => $valueParamatros) {
                             
-            $centroEducativo = $value['centroEducativo'];
-            $direccionRegional = $value['direccionRegional'];           
+            $centroEducativo = $valueParamatros['centroEducativo'];
+            $direccionRegional = $valueParamatros['direccionRegional'];           
         }
     }
     
     if (!empty($rsSeccion)) {            
-        foreach ($rsSeccion as $key => $value) {
+        foreach ($rsSeccion as $keySeccion => $valueSeccion) {
                             
-            $profesor_Nombre = $value['profesor_Nombre'];
-            $profesor_Apellido1 = $value['profesor_Apellido1'];
-            $profesor_Apellido2 = $value['profesor_Apellido2'];
-            $seccion_Cantidad = $value['seccion_Cantidad'];
-            $seccion_Descripcion = $value['seccion_Descripcion'];           
+            $profesor_Nombre = $valueSeccion['profesor_Nombre'];
+            $profesor_Apellido1 = $valueSeccion['profesor_Apellido1'];
+            $profesor_Apellido2 = $valueSeccion['profesor_Apellido2'];
+            $seccion_Cantidad = $valueSeccion['seccion_Cantidad'];
+            $seccion_Descripcion = $valueSeccion['seccion_Descripcion'];           
         }
     }
                             
@@ -72,46 +73,49 @@ try {
 <table border="1" align="left" cellpadding="5">
     <tr><td width="50%">Centro Educativo:</td><td><?php echo $centroEducativo ?></td></tr>
     <tr><td>Profesor guía:</td><td><?php echo $profesor_Nombre. " " . $profesor_Apellido1 . " " . $profesor_Apellido2 ?></td></tr>
-    <tr><td>Sección:</td><td align="center"><?php echo $seccion_Descripcion?></td></tr>
+    <tr><td>Sección:</td><td align="center"><?php echo $seccion_Descripcion ?></td></tr>
     <tr><td>Cantidad de estudiantes:</td><td align="right"><?php echo $seccion_Cantidad?></td></tr>
     <tr><td>Direción Regional:</td><td align="left"><?php echo $direccionRegional?></td></tr>
     <tr><td>Mes:</td><td align="center"><?php echo $alerta_Fecha?></td></tr>
     <tr><td>Fecha reporte:</td><td align="center"><?php echo $reporte_Fecha?></td></tr>
+    <tr><td></td><td></td></tr>
 </table> 
+<table border="1" align="left" cellpadding="5">
+        <tr>         
+            <td width="50%">Nombre del estudiante</td>
+            <td>Situación detectada</td>
+            <td>Comentario</td>
+        </tr>    
+
 <?php
     if(!empty($rsAlerta)) {
            
-        foreach($rsAlerta as $key => $valuePago) {
+        foreach($rsAlerta as $keyAlerta => $valueAlerta) {
             
-            $situacion_Nombre = $value['situacion_Nombre'];
-            $estudiante_Nombre = $value['estudiante_Nombre'];
-            $estudiante_PrimerApellido = $value['estudiante_PrimerApellido'];
-            $estudiante_SegundoApellido = $value['estudiante_SegundoApellido'];
-            $alerta_Comentario = $value['alerta_Comentario'];
+            $situacion_Nombre = $valueAlerta['situacion_Nombre'];
+            $estudiante_Nombre = $valueAlerta['estudiante_Nombre'];
+            $estudiante_PrimerApellido = $valueAlerta['estudiante_PrimerApellido'];
+            $estudiante_SegundoApellido = $valueAlerta['estudiante_SegundoApellido'];
+            $alerta_Comentario = $valueAlerta['alerta_Comentario'];
 ?>   
-    <table border="1" align="left" cellpadding="5">
-        <tr>         
-            <td width="50%">Nombre del estudiante:</td>
-            <td>Situación detectada:</td>
         <tr>
             <td><?php echo $estudiante_Nombre . " " . $estudiante_PrimerApellido. " ". $estudiante_SegundoApellido?></td>
-            <td><?php echo $situacion_Nombre?> </td>            
+            <td><?php echo $situacion_Nombre?> </td>
+            <td><?php echo $alerta_Comentario?> </td>            
         </tr>
-    </table>
 <?php
         } 
     }
-
-$rsAlerta = null;
-$rsParamatros = null;
-$rsSeccion = null;
-$db = null;
-
-?>       
+    $rsAlerta = null;
+    $rsParamatros = null;
+    $rsSeccion = null;
+    $db = null;
+?>
+</table>
 <table align="center" cellpadding="5">
     <tr><td></td><td></td></tr>         
-    <tr><td width="50%">Firma del profesor:</td><td align="center">____________________________</td></tr>
-    <tr><td>Nombre profesor </td><td align="center"><?php echo $profesor_Nombre. " " . $profesor_Apellido1 . " " . $profesor_Apellido2 ?></td></tr>    
+    <tr><td></td><td width="50%">Firma del profesor:</td><td align="center">____________________________</td></tr>
+    <tr><td></td><td>Nombre profesor </td><td align="center"><?php echo $profesor_Nombre. " " . $profesor_Apellido1 . " " . $profesor_Apellido2 ?></td></tr>    
 </table> 
 </body>
 </html>

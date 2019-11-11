@@ -3,13 +3,15 @@ function cargaAlerta(seccion_Id , mes) {
 
   var dir = "alerta.php?alerta=";
   
+
   $.getJSON("./sql/selectAlertaGestor.php", { seccion: seccion_Id, mes: mes }).done(function(data)  {
       
       var tmpl = document.getElementsByTagName('template')[0];
       var colNombre = tmpl.content.querySelector("#ColNombre");
       var ColSituacion = tmpl.content.querySelector("#ColSituacion");
-
-    $.each(data, function(i, item) {                      
+      
+    $.each(data, function(i, item) {
+            
             colNombre.setAttribute('href', dir + item.alerta_Id);				
             colNombre.textContent = item.estudiante_Nombre + " " + 
                                     item.estudiante_PrimerApellido  + " " + 
