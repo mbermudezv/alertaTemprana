@@ -2,14 +2,17 @@
 function cargaAlerta(seccion_Id , mes) {
 
   var dir = "alerta.php?alerta=";
-  
+  var tmpl = document.getElementsByTagName('template')[0];  
+  var colNombre = tmpl.content.querySelector("#ColNombre");
+  var ColSituacion = tmpl.content.querySelector("#ColSituacion");
 
-  $.getJSON("./sql/selectAlertaGestor.php", { seccion: seccion_Id, mes: mes }).done(function(data)  {
-      
-      var tmpl = document.getElementsByTagName('template')[0];
-      var colNombre = tmpl.content.querySelector("#ColNombre");
-      var ColSituacion = tmpl.content.querySelector("#ColSituacion");
-      
+  var div = document.getElementById('contenedor_Template');
+  while(div.firstChild){
+    div.removeChild(div.firstChild);
+  }
+
+  $.getJSON("./sql/selectAlertaGestor.php", { seccion: seccion_Id, mes: mes }).done(function(data)  {             
+           
     $.each(data, function(i, item) {
             
             colNombre.setAttribute('href', dir + item.alerta_Id);				
@@ -21,7 +24,7 @@ function cargaAlerta(seccion_Id , mes) {
             var clon = tmpl.content.cloneNode(true);
             document.getElementById('mainArea').appendChild(clon);             
        });
-           
+              
     }).fail(function(jqXHR, textStatus, error) {			
 
 		console.log("Error de la aplicación: " + error);    			
