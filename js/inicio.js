@@ -2,27 +2,34 @@
 function cargaAlerta(seccion_Id , mes) {
 
   var dir = "alerta.php?alerta=";
-  var tmpl = document.getElementsByTagName('template')[0];  
-  var colNombre = tmpl.content.querySelector("#ColNombre");
-  var ColSituacion = tmpl.content.querySelector("#ColSituacion");
 
-  var div = document.getElementById('contenedor_Template');
-  while(div.firstChild){
-    div.removeChild(div.firstChild);
-  }
+  $( ".Col" ).remove();
 
   $.getJSON("./sql/selectAlertaGestor.php", { seccion: seccion_Id, mes: mes }).done(function(data)  {             
            
-    $.each(data, function(i, item) {
+    $.each(data, function(i, linkData) {
+          
+            var itemNombre = document.getElementById("columnNombre");
+            var colNombre = document.createElement('a');
+            var createATextNombre = document.createTextNode(linkData.estudiante_Nombre + " " + 
+                                                            linkData.estudiante_PrimerApellido  + " " + 
+                                                            linkData.estudiante_SegundoApellido);
             
-            colNombre.setAttribute('href', dir + item.alerta_Id);				
-            colNombre.textContent = item.estudiante_Nombre + " " + 
-                                    item.estudiante_PrimerApellido  + " " + 
-                                    item.estudiante_SegundoApellido;
-            ColSituacion.setAttribute('href', dir + item.alerta_Id);
-            ColSituacion.textContent = item.situacion_Nombre;
-            var clon = tmpl.content.cloneNode(true);
-            document.getElementById('mainArea').appendChild(clon);             
+            colNombre.className = "Col";
+            colNombre.id = "ColNombre"	;
+            colNombre.setAttribute('href', dir + linkData.alerta_Id);				
+            colNombre.appendChild(createATextNombre);
+            itemNombre.appendChild(colNombre);				
+        
+            var itemSituacion = document.getElementById("columnSituacion");
+            var ColSituacion = document.createElement('a');
+            var createATextSituacion = document.createTextNode(linkData.situacion_Nombre);
+            ColSituacion.className = "Col";
+            ColSituacion.id = "ColSituacion";
+            ColSituacion.setAttribute('href', dir + linkData.alerta_Id);
+            ColSituacion.appendChild(createATextSituacion);
+            itemSituacion.appendChild(ColSituacion);
+            
        });
               
     }).fail(function(jqXHR, textStatus, error) {			

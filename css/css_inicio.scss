@@ -83,7 +83,7 @@ body {
 
 #contenedor_Template
 {
-    display: flex;
+    display: flex;    
     flex-flow: row nowrap;
     justify-content: center;    
     margin: $margenTablaMovil;
@@ -92,6 +92,20 @@ body {
 #contenedor_Template * {
     margin: $margenTablaMovil;
     padding: $paddinTablaMovil;
+}
+
+#columnNombre {
+    display: flex;
+    flex-direction: column;
+    //flex-basis: 50%;
+    //flex: 2;
+}
+
+#columnSituacion {
+    display: flex;
+    flex-direction: column;
+    //flex-basis: 90%;
+    //flex: 1;
 }
 
 .txtDescripcion {
@@ -128,7 +142,7 @@ body {
 }
 
 .Col {    
-    flex-basis: 90%;
+    flex-basis: 90%;    
     background-color: transparent;
 	font-family: "Lucida Console", Monaco, monospace;	
 	color: white;
@@ -137,6 +151,7 @@ body {
     padding: $paddinMovilTablaItemCol;
     text-decoration: none;           
 }
+  
 #statusBar {       
     // flex-grow: 1;
     display: flex;      

@@ -71,13 +71,15 @@ try {
         <div id="btnbuscar" onclick="cargaAlerta(seccion_Id,mes);"></div>
     </div>
     
-    <template>
-    <div id="contenedor_Template">            
-        <a id="ColNombre" class="Col"></a>
-        <a id="ColSituacion" class="Col"></a> 
-    </div>             
-    </template>
-        
+    <div id="contenedor_Template">
+        <div id="columnNombre">            
+            <a id="ColNombre" class="Col"></a>
+        </div>
+        <div id="columnSituacion">
+            <a id="ColSituacion" class="Col"></a>
+        </div>    
+    </div>
+
 </div>
 </body>
 <script language='javascript'>
