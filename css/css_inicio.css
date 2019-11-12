@@ -10,6 +10,10 @@
   width: device-width;
 }
 
+a {
+  color: lavender;
+}
+
 html {
   overflow-y: auto;
 }
@@ -124,6 +128,12 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 #columnSituacion {
@@ -134,6 +144,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .txtDescripcion {
@@ -181,8 +194,6 @@ body {
 }
 
 .Col {
-  -ms-flex-preferred-size: 90%;
-      flex-basis: 90%;
   background-color: transparent;
   font-family: "Lucida Console", Monaco, monospace;
   color: white;
@@ -190,6 +201,7 @@ body {
   margin: 0.5%;
   padding: 0.5%;
   text-decoration: none;
+  border-style: dashed;
 }
 
 #statusBar {

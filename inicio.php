@@ -25,7 +25,7 @@ try {
     <title>Inicio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/css_inicio.css" /> 
+    <link rel="stylesheet" type="text/css" media="screen" href="css/css_inicio.css?<?php echo rand(1000,9999)?>" /> 
     <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
     <script src="js/inicio.js"></script>  
 </head>
@@ -68,9 +68,12 @@ try {
         </select>                
     </div>
     <div id="contenedor_Fila">
-        <div id="btnbuscar" onclick="cargaAlerta(seccion_Id,mes);"></div>
+        <!--<div id="btnbuscar" onclick="cargaAlerta(seccion_Id,mes);"></div>-->
+        <div id="btnbuscar" onclick="cargarAlertas()"></div>
     </div>
-    
+
+    <div id="resultados"></div>
+
     <div id="contenedor_Template">
         <div id="columnNombre">            
             <a id="ColNombre" class="Col"></a>
@@ -94,6 +97,25 @@ cargaAlerta(seccion_Id,mes);
 function getvalhref() {                 
     return "excel_alerta.php?seccion=" + seccion_Id + "&mes=" + mes;                
 }
+
+function memitoRico(){
+  $.post( "funcionesAJAX.php", { tipo: "MEMORICO"})
+  .done(function( data ) {
+    $("#resultados").html(data);
+  });
+}
+
+function cargarAlertas(){
+  var seccion = $("#cboSeccion").val();
+  var mes = $("#cboMes").val();
+  $.post( "funcionesAJAX.php", { tipo: "CARGARALERTAS", seccion: seccion, mes: mes})
+  .done(function( data ) {
+    $("#resultados").html(data);
+  });
+}
+
+cargarAlertas();
+
 
 function getvalSeccion(sel) {             
         //alert(sel);
