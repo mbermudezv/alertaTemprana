@@ -73,22 +73,31 @@ try {
         <!-- <div id="btnbuscar" onclick="cargarAlertas()"></div> -->
     </div>
 
-    <!-- <div id="resultados"></div> -->
+    <div id="tabla">
+         <div id="fila">
+            <!-- <a id="ColNombre"></a> -->
+            <!-- <div id="Col1"><a id="ColNombre"></a></div> -->
+            <!-- <div id="Col2"><a id="ColSituacion"></a></div> -->
+        </div>
+    </div> 
+
+        <!-- <div id="resultados"></div> -->
 
     <!-- <div id="contenedor_Template">
         <div id="columnNombre">            
             <a id="ColNombre" class="Col"></a>
-        </div>
-        <div id="columnSituacion">
             <a id="ColSituacion" class="Col"></a>
-        </div>    
-    </div> -->
-    <table id="contenedor_Template">
-        <tr id="contenedor_Fila" class="trAlerta">
+        </div> -->
+        <!-- <div id="columnSituacion">
+           
+        </div>     -->
+    <!-- </div> -->
+    <!-- <table id="contenedor_Template">
+        <tr id="contenedor_Tr" class="trAlerta">
             <td id="columnNombre"><a id="ColNombre" class="Col"></a></td>
             <td id="columnSituacion"><a id="ColSituacion" class="Col"></a></td>
         </tr>
-    </table>
+    </table> -->
 
 </div>
 </body>
@@ -121,7 +130,7 @@ function cargarAlertas(){
   });
 }
 
-cargarAlertas();
+//cargarAlertas();
 
 
 function getvalSeccion(sel) {             

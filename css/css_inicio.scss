@@ -9,6 +9,12 @@ $margenTablaMovil : 0.50%;
 $paddinTablaMovil : 0.50%;
 $margenTablaPC : 0.10%;
 $paddinTablaPC : 0.10%;
+//tr
+$margenTrMovil : 1vw;
+$paddinTrMovil : 1vw;
+$margenTrPC : 2vw;
+$paddinTrPC : 2vw;
+
 //Col
 $margenMovilTablaItemCol : 0.50%;
 $paddinMovilTablaItemCol : 0.50%;
@@ -85,36 +91,88 @@ body {
     padding: $paddinTablaMovil;
 }
 
+#contenedor_Tr {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;    
+    margin: $margenTrMovil;
+    padding: $paddinTrMovil;   
+}
+
+#contenedor_Tr * {
+    margin: $margenTrMovil;
+    padding: $paddinTrMovil;
+}
+
+#tabla{    
+    display: flex;
+    //flex-direction: row;
+    flex-flow: row wrap;
+    justify-content: center;    
+    margin: $margenTablaMovil;
+    padding: $paddinTablaMovil; 
+    //border-style: solid;   
+}
+
+#fila{   
+    display: flex;    
+    margin: $margenMovilTablaItem;
+    padding: $paddinMovilTablaItem;
+    width: 40%;
+    border-style: dashed;         
+}
+
+#Col1{    
+    //flex: 1;
+    //align-self: center;
+      
+    background-color: transparent;
+	font-family: "Lucida Console", Monaco, monospace;	
+	color: white;
+    font-size: $fontMovil;        
+}
+
+#ColNombre{
+    width: 40%;  
+}
 #contenedor_Template
 {
     display: flex;    
     flex-direction: column;
-    justify-content: center;    
-    margin: $margenTablaMovil;
-    padding: $paddinTablaMovil;
-    //border-style: dashed;   
+    border-style: dashed;
+    //justify-content: center;    
+    //margin: $margenTablaMovil;
+    //padding: $paddinTablaMovil;
+    //border-style: dashed;
+    //align-items: baseline;
 }
-#contenedor_Template * {
-    margin: $margenTablaMovil;
-    padding: $paddinTablaMovil;
-}
+
+//#contenedor_Template * {    
+    //margin: $margenTablaMovil;
+    //padding: $paddinTablaMovil;
+    //align-items: baseline;
+    //align-self: baseline;
+//}
 
 #columnNombre {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;    
-    flex: 1;
-    margin: 2vw;
-    padding: 2wv;
-   // border-style: dashed; 
+    flex-direction: row;
+    //justify-content: center;
+    //align-items: flex-end;    
+    //flex: 1;
+    //align-items: baseline;
+    //width: 50px;
+    //padding: 2wv;
+    border-style: dashed; 
 }
 
 #columnSituacion {
     display: flex;
-    flex-direction: column;    
+    flex-direction: row;    
     flex: 1;
-    margin: 2vw;
-    padding: 2wv;
+    align-items: baseline;
+    //width: 50px;
+    //padding: 2wv;
 }
 
 .txtDescripcion {
@@ -150,7 +208,9 @@ body {
 	border-radius: 50%;	
 }
 
-.Col {        
+.Col {
+    //align-self: center;
+    border-style: dashed;       
     background-color: transparent;
 	font-family: "Lucida Console", Monaco, monospace;	
 	color: white;
@@ -227,9 +287,11 @@ a:active {
         flex-grow: 0;
         font-size: 1.2em;
     }
-    .Col {
-        flex-basis: 20%;
-    }
+
+    //.Col {
+        //flex-basis: 20%;
+    //}
+
     #statusBar {          
         margin: $margenPCTablaItemCol;
         padding: $paddinPCTablaItemCol;
