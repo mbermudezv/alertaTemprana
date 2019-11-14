@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,SAAS;EACL,KAAK,EAAE,YAAY;;;AAIvB,AAAA,IAAI,CAAC;EACL,UAAU,EAAE,IAAI;CACf;;AAED,AAAA,IAAI,EAAE,IAAI,CAAC;EACP,MAAM,EAAE,IAAI;CACf;;AAED,AAAA,IAAI,CAAC;EACD,MAAM,EAAE,EAAE;EACV,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,gBAAgB,EAAE,OAAO;CAC5B",
+    "sources": [
+        "css_flexTest.scss"
+    ],
+    "names": [],
+    "file": "css_flexTest.css"
+}
