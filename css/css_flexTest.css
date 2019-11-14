@@ -18,15 +18,123 @@ html, body {
   height: 100%;
 }
 
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
 body {
   margin: 0%;
+}
+
+#mainArea {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  background-color: #303030;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+#tabla {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0.5%;
+  padding: 0.5%;
+  border-style: solid;
+}
+
+#Col1 {
+  /* border-style: dashed;    
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%; */
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#Col2 {
+  /*     border-style: dashed;    
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%; */
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.left {
+  padding: 1em;
+  background-color: #337ab7;
+  text-align: left;
+}
+
+.right {
+  padding: 1em;
+  background-color: #5cb85c;
+  text-align: right;
+}
+
+.parent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  margin: 1em 0;
+  color: #fff;
+  border: 1px solid #333;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#parent5 > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#cellLinkNombre {
+  background-color: transparent;
+  font-family: "Lucida Console", Monaco, monospace;
+  color: black;
+  font-size: 1em;
+  margin: 0.5%;
+  padding: 0.5%;
+}
+
+#cellLinkSituacion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background-color: transparent;
+  font-family: "Lucida Console", Monaco, monospace;
+  color: black;
+  font-size: 1em;
+  margin: 0.5%;
+  padding: 0.5%;
 }
 /*# sourceMappingURL=css_flexTest.css.map */
