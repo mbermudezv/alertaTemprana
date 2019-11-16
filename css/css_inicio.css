@@ -87,107 +87,53 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 0.5%;
-  padding: 0.5%;
+  margin: 0.3%;
+  padding: 0.3%;
 }
 
-#contenedor_Fila * {
-  margin: 0.5%;
-  padding: 0.5%;
-}
-
-#contenedor_Tr {
+.tabla {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 1vw;
-  padding: 1vw;
+  margin: 0.1%;
+  padding: 0.1%;
 }
 
-#contenedor_Tr * {
-  margin: 1vw;
-  padding: 1vw;
-}
-
-#tabla {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 0.5%;
-  padding: 0.5%;
-}
-
-#fila {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0.5%;
-  padding: 0.5%;
-  width: 40%;
-  border-style: dashed;
-}
-
-#Col1 {
+.Col {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   background-color: transparent;
   font-family: "Lucida Console", Monaco, monospace;
   color: white;
   font-size: 1em;
+  margin: 0.1%;
+  padding: 0.1%;
 }
 
 #ColNombre {
-  width: 40%;
-}
-
-#contenedor_Template {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  border-style: dashed;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
-#columnNombre {
+#ColSituacion {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  border-style: dashed;
 }
 
-#columnSituacion {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
+.CellStyle {
+  background-color: transparent;
+  font-family: "Lucida Console", Monaco, monospace;
+  color: white;
+  font-size: 1em;
+  margin: 0.1%;
+  padding: 1vw;
+  text-decoration: none;
 }
 
 .txtDescripcion {
@@ -234,17 +180,6 @@ body {
   border-radius: 50%;
 }
 
-.Col {
-  border-style: dashed;
-  background-color: transparent;
-  font-family: "Lucida Console", Monaco, monospace;
-  color: white;
-  font-size: 1em;
-  margin: 0.5%;
-  padding: 0.5%;
-  text-decoration: none;
-}
-
 #statusBar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -257,8 +192,8 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 0.5%;
-  padding: 0.5%;
+  margin: 1vw;
+  padding: 1vw;
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 1em;
 }
@@ -314,10 +249,27 @@ a:active {
             flex-grow: 0;
     font-size: 1.2em;
   }
+  .tabla {
+    margin: 0.25%;
+    padding: 0.25%;
+  }
+  .Col {
+    margin: 0.25%;
+    padding: 0.25%;
+  }
+  .CellStyle {
+    font-size: 1em;
+    padding: 0.25%;
+  }
+  #ColNombre {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
   #statusBar {
-    margin: 0.5%;
-    padding: 0.5%;
-    font-size: 1.2em;
+    margin: 1vw;
+    padding: 1vw;
+    font-size: 1em;
   }
   #linkHogar {
     margin-left: 1vh;

@@ -1,32 +1,32 @@
-$margenPCTablaItemCol : 0.50%;
-$paddinPCTablaItemCol : 0.50%;
-$margenMovilTablaItem : 0.50%;
-$paddinMovilTablaItem : 0.50%;
+$margenPCTablaItemCol : 1vw;
+$paddinPCTablaItemCol : 1vw;
+$margenMovilTablaItem : 1vw;
+$paddinMovilTablaItem : 1vw;
 $fontMovil: 1em;
-$fontPC: 1.2em;
+$fontPC: 1em;
 //tabla
-$margenTablaMovil : 0.50%;
-$paddinTablaMovil : 0.50%;
+$margenTablaMovil : 0.30%;
+$paddinTablaMovil : 0.30%;
 $margenTablaPC : 0.10%;
 $paddinTablaPC : 0.10%;
-//tr
-$margenTrMovil : 1vw;
-$paddinTrMovil : 1vw;
-$margenTrPC : 2vw;
-$paddinTrPC : 2vw;
+
+//tabla template
+$margenTablaMovilTemplate : 0.10%;
+$paddinTablaMovilTemplate : 0.10%;
+$margenTablaPCTemplate : 0.25%;
+$paddinTablaPCTemplate : 0.25%;
 
 //Col
-$margenMovilTablaItemCol : 0.50%;
-$paddinMovilTablaItemCol : 0.50%;
+$margenMovilTablaItemCol : 1vw;
+$paddinMovilTablaItemCol : 1vw;
 
-$margenPCTablaItemCol : 0.50%;
-$paddinPCTablaItemCol : 0.50%;
+$margenPCTablaItemCol : 1vw;
+$paddinPCTablaItemCol : 1vw;
 
 @viewport {
     width: device-width;
 }
-
-    
+   
 html {
 overflow-y: auto;
 }
@@ -83,93 +83,47 @@ body {
     padding: $paddinTablaMovil;   
 }
 
-#contenedor_Fila * {
-    margin: $margenTablaMovil;
-    padding: $paddinTablaMovil;
-}
+//#contenedor_Fila * {
+    //margin: $margenTablaMovil;
+    //padding: $paddinTablaMovil;
+//}
 
-#contenedor_Tr {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;    
-    margin: $margenTrMovil;
-    padding: $paddinTrMovil;   
-}
-
-#contenedor_Tr * {
-    margin: $margenTrMovil;
-    padding: $paddinTrMovil;
-}
-
-#tabla{    
-    display: flex;
-    //flex-direction: row;
-    flex-flow: row wrap;
-    justify-content: center;    
-    margin: $margenTablaMovil;
-    padding: $paddinTablaMovil; 
-    //border-style: solid;   
-}
-
-#fila{   
+.tabla{    
     display: flex;    
-    margin: $margenMovilTablaItem;
-    padding: $paddinMovilTablaItem;
-    width: 40%;
-    border-style: dashed;         
+    margin: $margenTablaMovilTemplate;
+    padding: $paddinTablaMovilTemplate; 
 }
 
-#Col1{    
-    //flex: 1;
-    //align-self: center;
-      
+.Col{
+
+    flex: 1;
     background-color: transparent;
 	font-family: "Lucida Console", Monaco, monospace;	
 	color: white;
-    font-size: $fontMovil;        
+    font-size: $fontMovil;
+    margin: $margenTablaMovilTemplate;
+    padding: $paddinTablaMovilTemplate;
+            
 }
 
 #ColNombre{
-    width: 40%;  
-}
-#contenedor_Template
-{
-    display: flex;    
-    flex-direction: column;
-    border-style: dashed;
-    //justify-content: center;    
-    //margin: $margenTablaMovil;
-    //padding: $paddinTablaMovil;
-    //border-style: dashed;
-    //align-items: baseline;
-}
-
-//#contenedor_Template * {    
-    //margin: $margenTablaMovil;
-    //padding: $paddinTablaMovil;
-    //align-items: baseline;
-    //align-self: baseline;
-//}
-
-#columnNombre {
     display: flex;
-    flex-direction: row;
-    //justify-content: center;
-    //align-items: flex-end;    
-    //flex: 1;
-    //align-items: baseline;
-    //width: 50px;
-    //padding: 2wv;
-    border-style: dashed; 
+    justify-content:flex-start;
 }
 
-#columnSituacion {
+#ColSituacion{
     display: flex;
-    flex-direction: row;    
-    flex: 1;
-    align-items: baseline;
-    //width: 50px;
-    //padding: 2wv;
+}
+
+.CellStyle{
+
+    background-color: transparent;
+	font-family: "Lucida Console", Monaco, monospace;	
+	color: white;
+    font-size: $fontMovil;
+    margin: $margenTablaMovilTemplate;
+    padding: $paddinMovilTablaItemCol;
+    text-decoration: none; 
 }
 
 .txtDescripcion {
@@ -203,18 +157,6 @@ body {
     height: 3em;    
 	background: white;
 	border-radius: 50%;	
-}
-
-.Col {
-    //align-self: center;
-    border-style: dashed;       
-    background-color: transparent;
-	font-family: "Lucida Console", Monaco, monospace;	
-	color: white;
-    font-size: $fontMovil;
-    margin: $margenMovilTablaItemCol;
-    padding: $paddinMovilTablaItemCol;
-    text-decoration: none;
 }
   
 #statusBar {       
@@ -285,9 +227,24 @@ a:active {
         font-size: 1.2em;
     }
 
-    //.Col {
-        //flex-basis: 20%;
-    //}
+    .tabla{        
+        margin: $margenTablaPCTemplate;
+        padding: $paddinTablaPCTemplate;
+    }
+
+    .Col{        
+        margin: $margenTablaPCTemplate;
+        padding: $paddinTablaPCTemplate;
+    }
+
+    .CellStyle{            
+        font-size: $fontPC;
+        padding: $paddinTablaPCTemplate;        
+    }
+
+    #ColNombre{       
+        justify-content:flex-end;    
+    }
 
     #statusBar {          
         margin: $margenPCTablaItemCol;

@@ -25,8 +25,8 @@ try {
     <title>Inicio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/css_inicio.css?<?php echo rand(1000,9999)?>" /> 
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="css/css_inicio.css"/> -->
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="css/css_inicio.css?<?php echo rand(1000,9999)?>" />  -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/css_inicio.css"/>
     <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
     <script src="js/inicio.js"></script>  
 </head>
@@ -68,36 +68,15 @@ try {
         ?>
         </select>                
     </div>
+    
     <div id="contenedor_Fila">
         <div id="btnbuscar" onclick="cargaAlerta(seccion_Id,mes);"></div>
-        <!-- <div id="btnbuscar" onclick="cargarAlertas()"></div> -->
     </div>
 
-    <div id="tabla">
-         <div id="fila">
-            <!-- <a id="ColNombre"></a> -->
-            <!-- <div id="Col1"><a id="ColNombre"></a></div> -->
-            <!-- <div id="Col2"><a id="ColSituacion"></a></div> -->
-        </div>
-    </div> 
-
-        <!-- <div id="resultados"></div> -->
-
-    <!-- <div id="contenedor_Template">
-        <div id="columnNombre">            
-            <a id="ColNombre" class="Col"></a>
-            <a id="ColSituacion" class="Col"></a>
-        </div> -->
-        <!-- <div id="columnSituacion">
-           
-        </div>     -->
-    <!-- </div> -->
-    <!-- <table id="contenedor_Template">
-        <tr id="contenedor_Tr" class="trAlerta">
-            <td id="columnNombre"><a id="ColNombre" class="Col"></a></td>
-            <td id="columnSituacion"><a id="ColSituacion" class="Col"></a></td>
-        </tr>
-    </table> -->
+    <div class="tabla">        
+        <div id="Col1" class="Col"><a id="ColNombre" class="CellStyle"></a></div>
+        <div id="Col2" class="Col"><a id="ColSituacion" class="CellStyle"></a></div> 
+    </div>
 
 </div>
 </body>
@@ -107,31 +86,6 @@ var cboSeccion = document.getElementById('cboSeccion');
 var cboMes = document.getElementById('cboMes');
 var seccion_Id = cboSeccion.options[cboSeccion.selectedIndex].value;
 var mes = cboMes.options[cboMes.selectedIndex].value;
-
-cargaAlerta(seccion_Id,mes);
-
-function getvalhref() {                 
-    return "excel_alerta.php?seccion=" + seccion_Id + "&mes=" + mes;                
-}
-
-function memitoRico(){
-  $.post( "funcionesAJAX.php", { tipo: "MEMORICO"})
-  .done(function( data ) {
-    $("#resultados").html(data);
-  });
-}
-
-function cargarAlertas(){
-  var seccion = $("#cboSeccion").val();
-  var mes = $("#cboMes").val();
-  $.post( "funcionesAJAX.php", { tipo: "CARGARALERTAS", seccion: seccion, mes: mes})
-  .done(function( data ) {
-    $("#resultados").html(data);
-  });
-}
-
-//cargarAlertas();
-
 
 function getvalSeccion(sel) {             
         //alert(sel);

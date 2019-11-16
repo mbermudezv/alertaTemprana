@@ -55,23 +55,23 @@ body {
 #tabla{    
     display: flex;    
     //flex-flow: row wrap;
-    align-items: center;
+    //align-items: center;
     margin: $margenTablaMovil;
     padding: $paddinTablaMovil; 
     border-style: solid;    
 }
 
 #Col1{    
-    /* border-style: dashed;    
-    display: flex;
+     border-style: dashed;    
+    /*display: flex;
     flex-direction: column;
     flex-basis: 100%; */
     flex: 1;
 }
 
 #Col2{    
-/*     border-style: dashed;    
-    display: flex;
+     border-style: dashed;    
+    /* display: flex;
     flex-direction: column;
     flex-basis: 100%; */    
     flex: 1;

@@ -55,17 +55,14 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   margin: 0.5%;
   padding: 0.5%;
   border-style: solid;
 }
 
 #Col1 {
-  /* border-style: dashed;    
-    display: flex;
+  border-style: dashed;
+  /*display: flex;
     flex-direction: column;
     flex-basis: 100%; */
   -webkit-box-flex: 1;
@@ -74,8 +71,8 @@ body {
 }
 
 #Col2 {
-  /*     border-style: dashed;    
-    display: flex;
+  border-style: dashed;
+  /* display: flex;
     flex-direction: column;
     flex-basis: 100%; */
   -webkit-box-flex: 1;
