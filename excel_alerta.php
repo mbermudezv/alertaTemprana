@@ -26,8 +26,7 @@ try {
 
     $db = new select();    
     $rsAlerta = $db->conAlertaTemprana($seccion_Id, $alerta_Fecha);
-    $rsParamatros = $db->conParametros();
-    //$dbSeccion = new select();
+    $rsParamatros = $db->conParametros();    
     $rsSeccion = $db->conSeccionProfesor($seccion_Id);
     
     if (!empty($rsParamatros)) {            
@@ -71,13 +70,13 @@ try {
 <body>
 <center><h2>ALERTA TEMPRANA</h2></center>
 <table border="1" align="left" cellpadding="5">
-    <tr><td width="50%">Centro Educativo:</td><td><?php echo $centroEducativo ?></td></tr>
+    <tr><td width="50%">Centro Educativo:</td><td><?php echo $centroEducativo; ?></td></tr>
     <tr><td>Profesor guía:</td><td><?php echo $profesor_Nombre. " " . $profesor_Apellido1 . " " . $profesor_Apellido2 ?></td></tr>
-    <tr><td>Sección:</td><td align="center"><?php echo $seccion_Descripcion ?></td></tr>
-    <tr><td>Cantidad de estudiantes:</td><td align="right"><?php echo $seccion_Cantidad?></td></tr>
-    <tr><td>Direción Regional:</td><td align="left"><?php echo $direccionRegional?></td></tr>
-    <tr><td>Mes:</td><td align="center"><?php echo $alerta_Fecha?></td></tr>
-    <tr><td>Fecha reporte:</td><td align="center"><?php echo $reporte_Fecha?></td></tr>
+    <tr><td>Sección:</td><td align="center"><?php echo str_replace("-", " ", $seccion_Descripcion); ?></td></tr>
+    <tr><td>Cantidad de estudiantes:</td><td align="right"><?php echo $seccion_Cantidad;?></td></tr>
+    <tr><td>Direción Regional:</td><td align="left"><?php echo $direccionRegional;?></td></tr>
+    <tr><td>Mes:</td><td align="center"><?php echo $alerta_Fecha;?></td></tr>
+    <tr><td>Fecha reporte:</td><td align="center"><?php echo $reporte_Fecha;?></td></tr>
     <tr><td></td><td></td></tr>
 </table> 
 <table border="1" align="left" cellpadding="5">

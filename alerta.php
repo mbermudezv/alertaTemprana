@@ -14,32 +14,50 @@ $alerta_Comentario="";
 $estudiante_Nombre="";
 $estudiante_PrimerApellido="";
 $estudiante_SegundoApellido="";
-$estudiante_Descripcion=""; 
+$estudiante_Descripcion="";
+$seccion_Id = 0;
+$alerta_Fecha = 0;
+$estudiante_Id = 0; 
 
 $db = new select();
 $rsSituacion = $db->conSituacion();
 
 if (isset($_GET['alerta'])) {  
     $alerta_Id = $_GET['alerta'];
-} else {
-    $alerta_Id = 0;    
-}
-
-if (isset($_GET['estudiante'])) { 
-    $estudiante_Id = $_GET['estudiante'];   
-    $rsEstudiante = $db->conEstudiante($estudiante_Id);    
-    if (!empty($rsEstudiante)) {            
-        foreach ($rsEstudiante as $key => $value) {
+    $rsAlerta = $db->conAlertaId($alerta_Id);
+    if (!empty($rsAlerta)) {            
+        foreach ($rsAlerta as $key => $value) {
             $estudiante_Nombre = $value['estudiante_Nombre'];
             $estudiante_PrimerApellido = $value['estudiante_PrimerApellido'];
             $estudiante_SegundoApellido = $value['estudiante_SegundoApellido'];
+            $situacion_Id = $value['situacion_Id'];
+            $alerta_Comentario = $value['alerta_Comentario'];
+            $seccion_Id = $value['seccion_Id'];
+            $alerta_Fecha = $value['alerta_Fecha'];
+            $estudiante_Id = $value['estudiante_Id'];
+
         }
         $estudiante_Descripcion = $estudiante_Nombre . " " . $estudiante_PrimerApellido . " " . $estudiante_SegundoApellido;                      
     }            
 } else {
-    $estudiante_Id = 0;
-    $estudiante_Descripcion = "Seleccione el estudiante";
+    $alerta_Id = 0;    
 }
+
+// if (isset($_GET['estudiante'])) { 
+//     $estudiante_Id = $_GET['estudiante'];   
+//     $rsEstudiante = $db->conEstudiante($estudiante_Id);    
+//     if (!empty($rsEstudiante)) {            
+//         foreach ($rsEstudiante as $key => $value) {
+//             $estudiante_Nombre = $value['estudiante_Nombre'];
+//             $estudiante_PrimerApellido = $value['estudiante_PrimerApellido'];
+//             $estudiante_SegundoApellido = $value['estudiante_SegundoApellido'];
+//         }
+//         $estudiante_Descripcion = $estudiante_Nombre . " " . $estudiante_PrimerApellido . " " . $estudiante_SegundoApellido;                      
+//     }            
+// } else {
+//     $estudiante_Id = 0;
+//     $estudiante_Descripcion = "Seleccione el estudiante";
+// }
 
 } catch (PDOException $e) {		
 	echo "Error al conectar con la base de datos: " . $e->getMessage() . "\n";
@@ -61,7 +79,7 @@ if (isset($_GET['estudiante'])) {
 </head>
 <body>
 <div id="menu">
-    <a id="salir" href="inicio.php"></a>           
+    <a id="salir" href="inicio.php?seccion="></a>           
 </div>
 <div id="mainArea">
     <div id="contenedor_Fila">

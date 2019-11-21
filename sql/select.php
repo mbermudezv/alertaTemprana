@@ -173,6 +173,34 @@ class select {
 		$pdo = null;
 	}
 
+	function conAlertaId($alerta_Id){
+
+		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS , array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+		if ($pdo != null) {		
+			$sql = $pdo->query('SELECT alerta_Id, situacion_Id, seccion_Id, estudiante_Nombre, 
+						estudiante_PrimerApellido, estudiante_SegundoApellido, alerta_Comentario, 
+						MONTH(alerta_Fecha) as alerta_Fecha, estudiante.estudiante_Id FROM alerta 
+						INNER JOIN estudiante 
+						ON alerta.estudiante_Id = estudiante.estudiante_Id 
+						WHERE alerta_Id = '.$alerta_Id.' ');
+			$rs = [];
+			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+					$rs[] = [						
+						'situacion_Id' => $row['situacion_Id'],	                
+						'estudiante_Nombre' => $row['estudiante_Nombre'],
+						'estudiante_PrimerApellido' => $row['estudiante_PrimerApellido'],
+						'estudiante_SegundoApellido' => $row['estudiante_SegundoApellido'],
+						'alerta_Comentario' => $row['alerta_Comentario'],
+						'alerta_Id' => $row['alerta_Id'],
+						'alerta_Fecha' => $row['alerta_Fecha'],
+						'seccion_Id' => $row['seccion_Id'],
+						'estudiante_Id' => $row['estudiante_Id']											
+					];	
+			}
+			return $rs;
+		}	
+		$pdo = null;
+	}
 }
 
 ?>

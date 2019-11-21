@@ -6,6 +6,18 @@ ini_set('html_errors', true);
 ini_set('display_errors', true);
 require_once("sql/select.php");
 
+if (isset($_GET['seccion'])) {  
+    $seccion_Id = $_GET['seccion'];
+} else {
+    $seccion_Id = 0;    
+}
+
+if (isset($_GET['mes'])) {  
+    $mes = _GET['mes'];
+} else {
+    $mes = 0;    
+}
+
 try {
     $db = new select();
     $rsSeccion = $db->conSeccion();
@@ -81,11 +93,18 @@ try {
 </div>
 </body>
 <script language='javascript'>
- 
+
 var cboSeccion = document.getElementById('cboSeccion');
 var cboMes = document.getElementById('cboMes');
-var seccion_Id = cboSeccion.options[cboSeccion.selectedIndex].value;
-var mes = cboMes.options[cboMes.selectedIndex].value;
+seccion_Id = cboSeccion.options[cboSeccion.selectedIndex].value;
+mes = cboMes.options[cboMes.selectedIndex].value;
+
+var phpseccion_Id = <?php echo $seccion_Id; ?>;
+var phpmes = <?php echo $mes; ?>;
+
+if (seccion_Id > 0 && mes > 0) { 
+    cargaAlerta(seccion_Id,mes);    
+} 
 
 function getvalSeccion(sel) {             
         //alert(sel);
