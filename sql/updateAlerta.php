@@ -14,13 +14,13 @@ class updateAlerta
 		$this->pdo = $pdo;
 	}
 
-    public function update($alerta_Id, $situacion_Id, $estudiante_Id, $alerta_Comentario, $alerta_Mes){
+    public function update($alerta_Id, $situacion_Id, $estudiante_Id, $alerta_Comentario){
 
         date_default_timezone_set('America/Costa_Rica');		
         $alerta_Fecha = date_create('now')->format('Y-m-d H:i:s');
 
         $sql = 'UPDATE alerta SET situacion_Id = :situacion_Id, estudiante_Id = :estudiante_Id, 
-        alerta_Comentario = :alerta_Comentario, alerta_Fecha = :alerta_Fecha, alerta_Mes = :alerta_Mes 
+        alerta_Comentario = :alerta_Comentario, alerta_Fecha = :alerta_Fecha
         WHERE alerta_Id = :alerta_Id';
 					
 		try {
@@ -32,8 +32,7 @@ class updateAlerta
         ':situacion_Id' => $situacion_Id,
         ':estudiante_Id' => $estudiante_Id,
         ':alerta_Comentario' => $alerta_Comentario,
-        ':alerta_Fecha' => $alerta_Fecha,
-        ':alerta_Mes' => $alerta_Mes
+        ':alerta_Fecha' => $alerta_Fecha
 		]);     
 		      				
         $stmt = null;

@@ -111,8 +111,20 @@ if (phpseccion_Id > 0 && phpmes > 0) {
     mes = phpmes;
 } 
 
-function getvalSeccion(sel) {             
-        //alert(sel);
+if (mes == 0 || phpmes == 0){
+    mesActual();
+}
+
+function mesActual(){
+    var d = new Date();
+    var n = d.getMonth();
+    var mesInicio = n+1; // El +1 es por conveniencia. El array deberia iniciar en 0=Enero
+    $('#cboMes').val(mesInicio);
+    mes = mesInicio;
+}
+
+function getvalSeccion(sel) {                 
+    //alert(sel);
         seccion_Id = sel;           
 }
 

@@ -24,7 +24,7 @@ function cargaAlerta(seccion_Id , alerta_Mes) {
                                                       linkData.estudiante_SegundoApellido);
                                                             
       colNombre.appendChild(createATextNombre);
-      colNombre.setAttribute('href', dir + linkData.alerta_Id);
+      colNombre.setAttribute('href', dir + linkData.alerta_Id + "&mes=" + linkData.alerta_Mes);
           
       Col1.appendChild(colNombre);
       tabla.appendChild(Col1);
@@ -38,7 +38,7 @@ function cargaAlerta(seccion_Id , alerta_Mes) {
       var createATextSituacion = document.createTextNode(linkData.situacion_Nombre);
       ColSituacion.className = "CellStyle";
       ColSituacion.id = "ColSituacion";
-      ColSituacion.setAttribute('href', dir + linkData.alerta_Id);
+      ColSituacion.setAttribute('href', dir + linkData.alerta_Id + "&mes=" + linkData.alerta_Mes);
       ColSituacion.appendChild(createATextSituacion);
     
       Col2.appendChild(ColSituacion);

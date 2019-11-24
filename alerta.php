@@ -177,8 +177,7 @@ function guardar() {
         $.post("sql/updateAlertaGestor.php", {alerta: alerta_Id, 
                                             estudiante: estudiante_Id, 
                                             situacion: situacion_Id,
-                                            alerta_Comentario: alerta_Comentario,
-                                            alerta_Mes: alerta_Mes })
+                                            alerta_Comentario: alerta_Comentario })
         .done(function(data) { $('#guardar').html('<img src="img/guardar.png">');})
         .fail(function(jqXHR, textStatus, error) {
             console.log("Error de la aplicación: " + error);    			
