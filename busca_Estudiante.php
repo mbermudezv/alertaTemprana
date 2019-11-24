@@ -12,6 +12,20 @@ if (isset($_GET['estudiante'])) {
     $estudiante_Id = 0;
 }
  
+if (isset($_GET['seccion'])) {
+    $seccion_Id = $_GET['seccion'];
+}
+else {
+    $seccion_Id = 1;
+}
+
+if (isset($_GET['mes'])) {
+    $alerta_Mes = $_GET['mes'];
+}
+else {
+    $alerta_Mes = 1;
+}
+
 $dir = "alerta.php?estudiante=";
 
 ?>
@@ -30,9 +44,9 @@ $dir = "alerta.php?estudiante=";
 </head>
 <body>
 <div id="menu">
-    <a id="salir" href="<?php echo $dir . $estudiante_Id ?>"></a>
+    <a id="salir" href="<?php echo $dir . $estudiante_Id . "&seccion=" . $seccion_Id . "&mes=" . $alerta_Fecha; ?>"></a>
     <a id="mant" href="estudiante_Mantenimiento.php?id=<?php echo $estudiante_Id; ?>"></a>        
-</div>
+</div> 
 <div id="mainArea">
     <div id="contenedor_Fila"><input type="text" id="txtBuscar" name="buscar" value=""></div>
     <div id="contenedor_Fila"><div id="btnbuscar" onclick="buscar();"></div></div>
@@ -48,11 +62,13 @@ $dir = "alerta.php?estudiante=";
 function buscar() {
 	
 	var strAlias = document.getElementById("txtBuscar").value;
-	var dir = <?php echo json_encode($dir); ?>;	
+	var dir = <?php echo json_encode($dir); ?>;
+	var seccion = <?php echo $seccion_Id; ?>;
+	var mes = <?php echo $alerta_Mes; ?>;	
 
 	$( ".cell" ).remove();	
 	
-	$.getJSON("sql/selectEstudianteGestor.php", { alias: strAlias })	
+	$.getJSON("sql/selectEstudianteGestor.php", { alias: strAlias, seccion: seccion  })	
 	.done(function(data) {										
 	$.each(data, function(n, linkData) {
 				
@@ -64,7 +80,7 @@ function buscar() {
 		
 		listItem.className = "cell";
 		listItem.id = "hyp_cliente"	;
-		listItem.setAttribute('href', dir + linkData.estudiante_Id);				
+		listItem.setAttribute('href', dir + linkData.estudiante_Id + "&seccion=" + seccion + "&mes=" + mes);				
 		listItem.appendChild(createAText);
 		item.appendChild(listItem);				
 		

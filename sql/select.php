@@ -6,14 +6,16 @@ require_once 'conexion.php';
 
 class select {
 
-    function conEstudianteBusqueda($alias){
+    function conEstudianteBusqueda($alias, $seccion){
 	
 		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 		
 		if ($pdo != null) {
-			$consultaSQL = "SELECT * FROM estudiante WHERE estudiante_Nombre like '%$alias%' 
+			$consultaSQL = "SELECT * FROM estudiante WHERE (seccion_Id = $seccion) AND 
+							(estudiante_Nombre like '%$alias%' 
 							OR estudiante_PrimerApellido like '%$alias%' OR 
-							estudiante_SegundoApellido like '%$alias%' ORDER BY estudiante_Nombre DESC";
+							estudiante_SegundoApellido like '%$alias%')							
+							ORDER BY estudiante_Nombre DESC";
 			$sql = $pdo->query($consultaSQL);	
 			$rs = [];
 			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
@@ -146,17 +148,18 @@ class select {
 		$pdo = null;
 	}
 
-	function conAlertaTemprana($seccion_Id, $alerta_Fecha){
+	function conAlertaTemprana($seccion_Id, $alerta_Mes){
 
 		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS , array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 		if ($pdo != null) {		
 			$sql = $pdo->query('SELECT alerta_Id, situacion_Nombre, estudiante_Nombre, 
-			estudiante_PrimerApellido, estudiante_SegundoApellido, alerta_Comentario FROM alerta 
+			estudiante_PrimerApellido, estudiante_SegundoApellido, alerta_Comentario,
+			alerta_Mes FROM alerta 
 			INNER JOIN situacion 
 			ON alerta.situacion_Id = situacion.situacion_Id 
 			INNER JOIN estudiante 
 			ON alerta.estudiante_Id = estudiante.estudiante_Id 
-			WHERE estudiante.seccion_Id ='.$seccion_Id.' AND Month(alerta_Fecha) = '.$alerta_Fecha.' ');
+			WHERE estudiante.seccion_Id ='.$seccion_Id.' AND alerta_Mes = '.$alerta_Mes.' ');
 			$rs = [];
 			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
 					$rs[] = [						
@@ -165,7 +168,8 @@ class select {
 						'estudiante_PrimerApellido' => $row['estudiante_PrimerApellido'],
 						'estudiante_SegundoApellido' => $row['estudiante_SegundoApellido'],
 						'alerta_Comentario' => $row['alerta_Comentario'],
-						'alerta_Id' => $row['alerta_Id']												
+						'alerta_Id' => $row['alerta_Id'],
+						'alerta_Mes' => $row['alerta_Mes']												
 					];	
 			}
 			return $rs;

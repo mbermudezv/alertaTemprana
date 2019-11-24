@@ -5,8 +5,9 @@ require_once("select.php");
 try {
 
 	$alias=$_GET['alias'];
+	$seccion=$_GET['seccion'];
 	$db = new select();		
-	$rs = $db->conEstudianteBusqueda($alias);			
+	$rs = $db->conEstudianteBusqueda($alias, $seccion);			
 	
 	if(!empty($rs)) {
 		$rsArray = array();

@@ -1,11 +1,11 @@
 
-function cargaAlerta(seccion_Id , mes) {
+function cargaAlerta(seccion_Id , alerta_Mes) {
 
-  var dir = "alerta.php?alerta=";
+  var dir = "alerta.php?alerta=";  
   $('#btnbuscar').html('<img src="img/cargando.gif">');
   $('.tabla').remove();
 
-  $.getJSON("./sql/selectAlertaGestor.php", { seccion: seccion_Id, mes: mes }).done(function(data)  {             
+  $.getJSON("./sql/selectAlertaGestor.php", { seccion: seccion_Id, mes: alerta_Mes }).done(function(data)  {             
     
     $.each(data, function(i, linkData) {            
 
@@ -45,6 +45,8 @@ function cargaAlerta(seccion_Id , mes) {
       tabla.appendChild(Col2);
 
        });
+       $('#cboSeccion').val(seccion_Id);
+       $('#cboMes').val(alerta_Mes);
        $('#btnbuscar').html('<img src="img/refresh.png">');       
     }).fail(function(jqXHR, textStatus, error) {			
 

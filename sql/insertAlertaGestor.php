@@ -9,7 +9,8 @@ try {
     
     $estudiante_Id = $_GET['estudiante'];   
     $situacion_Id = $_GET['situacion'];    
-	$alerta_Comentario = $_GET['alerta_Comentario'];	
+	$alerta_Comentario = $_GET['alerta_Comentario'];
+	$alerta_Mes = $_GET['alerta_Mes'];	
 	
 	date_default_timezone_set('America/Costa_Rica');		
 	$alerta_Fecha = date_create('now')->format('Y-m-d H:i:s');
@@ -19,10 +20,10 @@ try {
 
 	$pdo = new \PDO(DB_Str, DB_USER, DB_PASS);		
 	//$this->pdo = $pdo;
-	$sql = 'INSERT INTO alerta (estudiante_Id, situacion_Id, alerta_Comentario, alerta_Fecha) VALUES (?,?,?,?)';
+	$sql = 'INSERT INTO alerta (estudiante_Id, situacion_Id, alerta_Comentario, alerta_Fecha, alerta_Mes) VALUES (?,?,?,?,?)';
 	$stmt= $pdo->prepare($sql);
 	//$stmt= $pdo->beginTransaction();
-	$stmt->execute([$estudiante_Id, $situacion_Id, $alerta_Comentario, $alerta_Fecha]);
+	$stmt->execute([$estudiante_Id, $situacion_Id, $alerta_Comentario, $alerta_Fecha, $alerta_Mes]);
 	$last = $pdo->lastInsertId();
 	//$stmt= $pdo->commit();
 	

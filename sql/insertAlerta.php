@@ -16,13 +16,13 @@ class insertAlerta {
         
     }
         
-    public function insert($estudiante_Id, $situacion_Id, $alerta_Comentario){
+    public function insert($estudiante_Id, $situacion_Id, $alerta_Comentario, $alerta_Mes){
                         		
         date_default_timezone_set('America/Costa_Rica');		
         $alerta_Fecha = date_create('now')->format('Y-m-d H:i:s');
 
         $sql = 'INSERT INTO alerta (estudiante_Id, situacion_Id, alerta_Comentario, alerta_Fecha) 
-                VALUES (:estudiante_Id, :situacion_Id, :alerta_Comentario)';
+                VALUES (:estudiante_Id, :situacion_Id, :alerta_Comentario, :alerta_Fecha, :alerta_Mes)';
                 
         try {
 		
@@ -32,7 +32,8 @@ class insertAlerta {
             ':estudiante_Id' => $estudiante_Id,
             ':situacion_Id' => $situacion_Id,
             ':alerta_Comentario' => $alerta_Comentario,
-            ':alerta_Fecha' => $alerta_Fecha        
+            ':alerta_Fecha' => $alerta_Fecha,
+            ':alerta_Mes' => $alerta_Mes        
             ]);
         $last = $this->pdo->lastInsertId();        
         $this->pdo->commit();     

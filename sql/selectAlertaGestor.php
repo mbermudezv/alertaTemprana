@@ -5,10 +5,10 @@ require_once("select.php");
 try {
 
 	$seccion_Id=$_GET['seccion'];
-	$alerta_Fecha=$_GET['mes'];
+	$alerta_Mes=$_GET['mes'];
 
 	$db = new select();		
-	$rs = $db->conAlertaTemprana($seccion_Id, $alerta_Fecha);			
+	$rs = $db->conAlertaTemprana($seccion_Id, $alerta_Mes);			
 	
 	if(!empty($rs)) {
 		$rsArray = array();

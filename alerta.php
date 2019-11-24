@@ -17,10 +17,19 @@ $estudiante_SegundoApellido="";
 $estudiante_Descripcion="";
 $seccion_Id = 0;
 $alerta_Fecha = 0;
-$estudiante_Id = 0; 
+$estudiante_Id = 0;
+$alerta_Mes = 0; 
 
 $db = new select();
 $rsSituacion = $db->conSituacion();
+
+if (isset($_GET['seccion'])) {
+    $seccion_Id = $_GET['seccion'];
+}
+
+if (isset($_GET['mes'])) {
+    $alerta_Mes = $_GET['mes'];
+}
 
 if (isset($_GET['alerta'])) {  
     $alerta_Id = $_GET['alerta'];
@@ -43,21 +52,22 @@ if (isset($_GET['alerta'])) {
     $alerta_Id = 0;    
 }
 
-// if (isset($_GET['estudiante'])) { 
-//     $estudiante_Id = $_GET['estudiante'];   
-//     $rsEstudiante = $db->conEstudiante($estudiante_Id);    
-//     if (!empty($rsEstudiante)) {            
-//         foreach ($rsEstudiante as $key => $value) {
-//             $estudiante_Nombre = $value['estudiante_Nombre'];
-//             $estudiante_PrimerApellido = $value['estudiante_PrimerApellido'];
-//             $estudiante_SegundoApellido = $value['estudiante_SegundoApellido'];
-//         }
-//         $estudiante_Descripcion = $estudiante_Nombre . " " . $estudiante_PrimerApellido . " " . $estudiante_SegundoApellido;                      
-//     }            
-// } else {
-//     $estudiante_Id = 0;
-//     $estudiante_Descripcion = "Seleccione el estudiante";
-// }
+if (isset($_GET['estudiante'])) { 
+    $estudiante_Id = $_GET['estudiante'];   
+    $rsEstudiante = $db->conEstudiante($estudiante_Id);    
+    if (!empty($rsEstudiante)) {            
+        foreach ($rsEstudiante as $key => $value) {
+            $estudiante_Nombre = $value['estudiante_Nombre'];
+            $estudiante_PrimerApellido = $value['estudiante_PrimerApellido'];
+            $estudiante_SegundoApellido = $value['estudiante_SegundoApellido'];
+        }
+        $estudiante_Descripcion = $estudiante_Nombre . " " . $estudiante_PrimerApellido . " " . $estudiante_SegundoApellido;                      
+    }            
+} 
+
+if ($estudiante_Id==0) {
+    $estudiante_Descripcion = "Seleccione el estudiante";
+}
 
 } catch (PDOException $e) {		
 	echo "Error al conectar con la base de datos: " . $e->getMessage() . "\n";
@@ -79,11 +89,11 @@ if (isset($_GET['alerta'])) {
 </head>
 <body>
 <div id="menu">
-    <a id="salir" href="inicio.php?seccion="></a>           
+    <a id="salir" href="inicio.php?seccion=<?php echo $seccion_Id; ?>&mes=<?php echo $alerta_Mes; ?>"></a>           
 </div>
 <div id="mainArea">
     <div id="contenedor_Fila">
-        <a id="add" href="busca_Estudiante.php"></a>
+        <a id="add" href="busca_Estudiante.php?seccion=<?php echo $seccion_Id; ?>&mes=<?php echo $alerta_Mes; ?>"></a>
     </div>
     <div id="contenedor_Fila">
         <div id="ColNombre"> <?php echo $estudiante_Descripcion; ?> </div>
@@ -130,7 +140,8 @@ function guardar() {
 
     var alerta_Id = <?php echo $alerta_Id; ?>;    
     var estudiante_Id = <?php echo $estudiante_Id; ?>;
-    var alerta_Comentario = $('#txtComentario').val();    
+    var alerta_Comentario = $('#txtComentario').val();
+    var alerta_Mes = <?php echo $alerta_Mes; ?>;    
 
     if (estudiante_Id == 0) {
         alert("Seleccione el estudiante");
@@ -142,7 +153,8 @@ function guardar() {
         
         $.get("sql/insertAlertaGestor.php", {estudiante: estudiante_Id, 
                                                 situacion: situacion_Id,
-                                                alerta_Comentario: alerta_Comentario})
+                                                alerta_Comentario: alerta_Comentario,
+                                                alerta_Mes: alerta_Mes})
         .done(function(data) {         
             //email
             alerta_Id = data;
@@ -165,7 +177,8 @@ function guardar() {
         $.post("sql/updateAlertaGestor.php", {alerta: alerta_Id, 
                                             estudiante: estudiante_Id, 
                                             situacion: situacion_Id,
-                                            alerta_Comentario: alerta_Comentario })
+                                            alerta_Comentario: alerta_Comentario,
+                                            alerta_Mes: alerta_Mes })
         .done(function(data) { $('#guardar').html('<img src="img/guardar.png">');})
         .fail(function(jqXHR, textStatus, error) {
             console.log("Error de la aplicación: " + error);    			

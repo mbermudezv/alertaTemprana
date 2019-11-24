@@ -6,16 +6,18 @@ ini_set('html_errors', true);
 ini_set('display_errors', true);
 require_once("sql/select.php");
 
+$seccion_Id = 1;
+
 if (isset($_GET['seccion'])) {  
-    $seccion_Id = $_GET['seccion'];
+    $get_Seccion_Id = $_GET['seccion'];
 } else {
-    $seccion_Id = 0;    
+    $get_Seccion_Id = 0;    
 }
 
 if (isset($_GET['mes'])) {  
-    $mes = _GET['mes'];
+    $get_Mes = $_GET['mes'];
 } else {
-    $mes = 0;    
+    $get_Mes = 0;    
 }
 
 try {
@@ -45,11 +47,12 @@ try {
 <body>
 <div id="menu">
     <a id="salir" href="https://www.lasesperanzas.ed.cr"></a>
-    <a id="hyp_reporte" href="#" onclick='javascript:window.location.replace("excel_alerta.php?seccion=" + seccion_Id + "&mes=" + mes)'></a>
+    <a id="hyp_reporte" onclick='javascript:window.location.replace("excel_alerta.php?seccion=" + seccion_Id + "&mes=" + mes)'></a>
 </div>
 <div id="mainArea">
     <div id="contenedor_Fila">
-        <a id="add" href="alerta.php"></a>
+        <a id="add" href="javascript:void(0)"></a>
+        <!-- onclick='javascript:window.location.replace("alerta.php?seccion=" + seccion_Id + "&mes=" + mes)' -->
     </div>
     <div id="contenedor_Fila">
         <select id="cboSeccion" class="txtDescripcion" onchange="getvalSeccion(this.value);">
@@ -96,14 +99,16 @@ try {
 
 var cboSeccion = document.getElementById('cboSeccion');
 var cboMes = document.getElementById('cboMes');
-seccion_Id = cboSeccion.options[cboSeccion.selectedIndex].value;
-mes = cboMes.options[cboMes.selectedIndex].value;
+var seccion_Id = cboSeccion.options[cboSeccion.selectedIndex].value;
+var mes = cboMes.options[cboMes.selectedIndex].value;
 
-var phpseccion_Id = <?php echo $seccion_Id; ?>;
-var phpmes = <?php echo $mes; ?>;
+var phpseccion_Id = <?php echo $get_Seccion_Id; ?>;
+var phpmes = <?php echo $get_Mes; ?>;
 
-if (seccion_Id > 0 && mes > 0) { 
-    cargaAlerta(seccion_Id,mes);    
+if (phpseccion_Id > 0 && phpmes > 0) {     
+    cargaAlerta(phpseccion_Id,phpmes);
+    seccion_Id =  phpseccion_Id;
+    mes = phpmes;
 } 
 
 function getvalSeccion(sel) {             
@@ -115,6 +120,12 @@ function getvalFecha(sel) {
         //alert(sel);
         mes = sel;           
 }
+
+$(document).ready(function(){
+  $("#add").click(function(){
+    $("#add").attr("href", "alerta.php?seccion=" + seccion_Id + "&mes=" + mes);
+  });
+});
 
 $('#salir').html('<img src="img/salir.png">');
 $('#hyp_reporte').html('<img src=img/excel.png>');
