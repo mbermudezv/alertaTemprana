@@ -1,15 +1,9 @@
-@-ms-viewport {
-  width: device-width;
-}
-
 @-o-viewport {
   width: device-width;
 }
-
 @viewport {
   width: device-width;
 }
-
 html {
   overflow-y: auto;
 }
@@ -24,28 +18,16 @@ html, body {
 
 body {
   margin: 0%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   background-color: #303030;
 }
 
 #menu {
   background-color: #499bea;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: space-between;
   margin: 1vw;
   padding: 1vw;
   border-radius: 5px;
@@ -59,16 +41,9 @@ body {
 }
 
 #mainArea {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  flex-grow: 1;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
+  flex-flow: column nowrap;
 }
 
 #add {
@@ -77,32 +52,21 @@ body {
 }
 
 #contenedor_Fila {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-flow: row wrap;
+  justify-content: center;
   margin: 0.3%;
   padding: 0.3%;
 }
 
 .tabla {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin: 0.1%;
   padding: 0.1%;
 }
 
 .Col {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   background-color: transparent;
   font-family: "Lucida Console", Monaco, monospace;
   color: white;
@@ -112,17 +76,11 @@ body {
 }
 
 #ColNombre {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 #ColSituacion {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -137,12 +95,8 @@ body {
 }
 
 .txtDescripcion {
-  -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
-          flex-grow: 0;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  flex-grow: 0;
+  align-self: center;
   background-color: black;
   color: white;
   font-family: "Lucida Console", Monaco, monospace;
@@ -150,25 +104,20 @@ body {
 }
 
 #cboSeccion {
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%;
-  text-align-last: center;
+  flex-basis: 50%;
+  -moz-text-align-last: center;
+       text-align-last: center;
 }
 
 #cboMes {
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%;
-  text-align-last: center;
+  flex-basis: 50%;
+  -moz-text-align-last: center;
+       text-align-last: center;
 }
 
 #btnbuscar {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
+  flex-flow: row wrap;
   margin: 1vw;
   padding: 1vw;
 }
@@ -181,17 +130,10 @@ body {
 }
 
 #statusBar {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background-color: #499bea;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: space-between;
   margin: 1vw;
   padding: 1vw;
   font-family: "Lucida Console", Monaco, monospace;
@@ -232,21 +174,17 @@ a:active {
     padding: 0.1%;
   }
   #cboSeccion {
-    -ms-flex-preferred-size: 25%;
-        flex-basis: 25%;
+    flex-basis: 25%;
   }
   #cboMes {
-    -ms-flex-preferred-size: 25%;
-        flex-basis: 25%;
+    flex-basis: 25%;
   }
   #btnbuscar * {
     width: 4em;
     height: 4em;
   }
   .txtDescripcion {
-    -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
+    flex-grow: 0;
     font-size: 1.2em;
   }
   .tabla {
@@ -262,9 +200,7 @@ a:active {
     padding: 0.25%;
   }
   #ColNombre {
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    justify-content: flex-end;
   }
   #statusBar {
     margin: 1vw;
@@ -277,5 +213,4 @@ a:active {
   #linkWappcom {
     margin-right: 1vh;
   }
-}
-/*# sourceMappingURL=css_inicio.css.map */
+}/*# sourceMappingURL=css_inicio.css.map */

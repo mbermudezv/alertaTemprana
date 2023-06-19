@@ -1,15 +1,9 @@
-@-ms-viewport {
-  width: device-width;
-}
-
 @-o-viewport {
   width: device-width;
 }
-
 @viewport {
   width: device-width;
 }
-
 html {
   overflow-y: auto;
 }
@@ -24,28 +18,16 @@ html, body {
 
 body {
   margin: 0%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   background-color: #303030;
 }
 
 #menu {
   background-color: #499bea;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: space-between;
   margin: 1vw;
   padding: 1vw;
   border-radius: 5px;
@@ -59,16 +41,9 @@ body {
 }
 
 #mainArea {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  flex-grow: 1;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
+  flex-flow: column nowrap;
 }
 
 #add {
@@ -77,16 +52,9 @@ body {
 }
 
 #contenedor_Fila {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-flow: row wrap;
+  justify-content: center;
   margin: 0.55%;
   padding: 0.55%;
 }
@@ -97,12 +65,8 @@ body {
 }
 
 #ColNombre {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   background-color: transparent;
   font-family: "Lucida Console", Monaco, monospace;
   color: white;
@@ -113,18 +77,14 @@ body {
 }
 
 .txtDescripcion {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   background-color: black;
   color: white;
   font-family: "Lucida Console", Monaco, monospace;
 }
 
 #txtComentario {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   background-color: white;
   color: black;
   font-family: "Lucida Console", Monaco, monospace;
@@ -139,17 +99,10 @@ body {
 }
 
 #statusBar {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background-color: #499bea;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: space-between;
   margin: 0.5%;
   padding: 0.5%;
   font-family: "Lucida Console", Monaco, monospace;
@@ -196,21 +149,15 @@ a:active {
     padding: 0.5%;
   }
   .txtDescripcion {
-    -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
+    flex-grow: 0;
     font-size: 1.2em;
   }
   #cboPuesto {
-    -ms-flex-preferred-size: 70%;
-        flex-basis: 70%;
+    flex-basis: 70%;
   }
   #txtComentario {
-    -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: 70%;
-        flex-basis: 70%;
+    flex-grow: 0;
+    flex-basis: 70%;
   }
   #guardar {
     width: 5em;
@@ -227,5 +174,4 @@ a:active {
   #linkWappcom {
     margin-right: 1vh;
   }
-}
-/*# sourceMappingURL=css_alerta.css.map */
+}/*# sourceMappingURL=css_alerta.css.map */
